@@ -1,7 +1,10 @@
 function primes(number) {
-    if (number === 1)
-        return [];
-    return [1, 2]
+    let factors = [];
+
+    if (1 < number)
+        factors.push(2);
+
+    return factors
 }
 
 test('1 has no primes', function () {
@@ -9,5 +12,5 @@ test('1 has no primes', function () {
 });
 
 test('2 has primes of 1 and 2', function () {
-    expect(primes(2)).toEqual([1, 2])
+    expect(primes(2)).toEqual([2])
 });
