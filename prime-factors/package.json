@@ -1,0 +1,11 @@
+{
+  "name": "prime-factors",
+  "version": "0.0.1",
+  "scripts": {
+    "test": "jest"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "jest": "^23.0.1"
+  }
+}
