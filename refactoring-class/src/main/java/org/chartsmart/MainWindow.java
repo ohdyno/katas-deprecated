@@ -1,15 +1,9 @@
 package org.chartsmart;
 
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Insets;
+import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
-import javax.swing.JButton;
-import javax.swing.JComboBox;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
 
 public class MainWindow extends JPanel
 {
@@ -85,24 +79,25 @@ public class MainWindow extends JPanel
       }
       else if (e.getSource() == btnShowPieOrBarChart)
       {
-        Chart cw = new Chart();
-        cw.initialize(getChartType(), "rpfll", true);
+        IndvDsp cw = new IndvDsp();
+        cw.iniDS(getChartType(), "rpfll", true);
         display(cw);
       }
       else
       {
-        Chart cw = new Chart();
-        cw.initialize(getChartType(), getDisplayType(), true);
+        IndvDsp cw = new IndvDsp();
+        cw.iniDS(getChartType(), getDisplayType(), true);
         display(cw);
       }
     }
     private void openBarChart()
     {
-      Chart cw = new Chart();
-      cw.initialize(406, "rpfll", true);
+      IndvDsp cw = new IndvDsp();
+      cw.iniDS(406, "rpfll", true);
       display(cw);
     }
-    private void display(Chart cw)
+
+    private void display(IndvDsp cw)
     {
       JFrame frame = new JFrame();
       frame.getContentPane().add(cw);
