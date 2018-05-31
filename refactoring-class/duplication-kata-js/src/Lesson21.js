@@ -8,28 +8,33 @@ class Lesson21 extends Song.Song {
   singSong(style, names) {
     switch (style) {
       case 1 :
-        this.singVerse(names, true, "L", 0, "Hip Hip Horray! For ");
+        for (var i = 0; i < names.length; i++) {
+          var name = names[i];
+          if (name.startsWith("L", 0)) {
+            this.sing("Hip Hip Horray! For " + name);
+          }
+          else {
+            this.sing("Hello " + name + ", it's nice to meet you.");
+          }
+        }
         break;
-
       case 2 :
-        this.singVerse(names, true, "am", 1, "Say yeah! Say yo! Say ");
+        for (var i = 0; i < names.length; i++) {
+          var name = names[i];
+          if (name.startsWith("am", 1)) {
+            this.sing("Say yeah! Say yo! Say " + name);
+          }
+          else {
+            this.sing("Hello " + name + ", it's nice to meet you.");
+          }
+        }
         break;
-
       case 3 :
-        this.singVerse(names, false);
+        for (var i = 0; i < names.length; i++) {
+          var name = names[i];
+          this.sing("Hello " + name + ", it's nice to meet you.");
+        }
         break;
-    }
-  }
-
-  singVerse(names, shouldSingLyric, searchString, position, lyrics) {
-    for (var i = 0; i < names.length; i++) {
-      var name = names[i];
-      if (shouldSingLyric && name.startsWith(searchString, position)) {
-        this.sing(lyrics + name);
-      }
-      else {
-        this.sing("Hello " + name + ", it's nice to meet you.");
-      }
     }
   }
 }
