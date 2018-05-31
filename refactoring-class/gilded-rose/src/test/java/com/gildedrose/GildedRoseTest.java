@@ -10,7 +10,7 @@ public class GildedRoseTest {
 
     @Test
     public void characterize() throws Exception {
-        String[] names = {"foo", "Aged Brie", "Backstage passes to a TAFKAL80ETC concert"};
+        String[] names = {"foo", "Aged Brie", "Backstage passes to a TAFKAL80ETC concert", "Sulfuras, Hand of Ragnaros"};
         Integer[] sellins = {0, -1, 1, 2, 5, 6, 7, 10, 11, 12, MIN_VALUE, MAX_VALUE};
         Integer[] qualities = {0, -1, 1, 2, 49, 50, 51, MIN_VALUE, MAX_VALUE};
         CombinationApprovals.verifyAllCombinations(this::testCombination, names, sellins, qualities);
