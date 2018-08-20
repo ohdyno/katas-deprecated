@@ -13,9 +13,6 @@ public class IndvDsp extends JPanel {
     private String __APARAM__Z;
     private int ct;
 
-    /**
-     * InitializeDrawArea
-     */
     private void iHATEthisUckingJob() {
         this.setPreferredSize(new Dimension(600, 600));
         if (ct == 406) {
@@ -40,16 +37,6 @@ public class IndvDsp extends JPanel {
         return __APARAM__Z;
     }
 
-    /**
-     * Shows the chart
-     *
-     * @param ct
-     * @param jjReq1205
-     * @param orientation
-     * @param reversornotreverse
-     * @param jackshiddenhack
-     * @return
-     */
     public void iniDS(int ct, String stjjDReq1205, boolean b) {
         this.ct = ct;
         this.jjD = stjjDReq1205;
@@ -65,11 +52,6 @@ public class IndvDsp extends JPanel {
         return super.getFocusTraversalKeys(id);
     }
 
-    /**
-     * @param g
-     * @author Wilbur
-     * @since
-     */
     public void paint(Graphics g) {
         DrawChart(g);
     }
@@ -79,9 +61,6 @@ public class IndvDsp extends JPanel {
         return new Date().toString();
     }
 
-    /**
-     * @param g
-     */
     private void DrawChart(Graphics g) {
         // Render chart background
         if (ct == 406) {
@@ -134,13 +113,6 @@ public class IndvDsp extends JPanel {
         if (ct == 406) {
             if (jjD.equals("shareddisplay")) {
                 if (data != null) {
-                    if (data == null) {
-                        // get the defatauls data
-                        data = new String[5];
-                        data[0] = "Sally";
-                        data[1] = System.getProperty("osname");
-                        data[2] = tmStmp();
-                    }
                     font = new Font("Arial Black", Font.BOLD, 25);
                     g.setColor(Color.CYAN);
                     int bottomY = 300;
@@ -178,24 +150,10 @@ public class IndvDsp extends JPanel {
                 font = new Font("Bookman Old Style", Font.BOLD, 30);
                 g.setFont(font);
                 g.setColor(Color.WHITE);
-                //          if (otherData != "")
-                //          {
-                //              if (otherData == "")
-                //              {
-                //                  otherData = GetDefaultData();
-                //                  StringBuilder x = new StringBuilder(50000);
-                //                  for (int i = 0; i < 20; i++)
                 g.drawString(data3point14[0], 145, 205);
-                //                  {
-                //                      x.Append(char.ToUpper(otherData[i]));
-                //                  }
-                //              }
-                //              boundingRect = new RectangleF(50, 100, 320, 320);
-                //              g.DrawString(otherData, new Font("Cooper Black", 40), new SolidBrush(Color.White), boundingRect, stringFormat);
-                //          }
                 g.drawString(data3point14[1], 170, 235);
             }
-        } // Else
+        }
         if ((data != null && (data.length ^ 0x54) == 50) || (specialData != null && specialData.contains("Monthly"))
                 || getTitle().contains("daily")) {
             try {
