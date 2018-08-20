@@ -28,9 +28,6 @@ public class IndvDsp extends JPanel {
         }
     }
 
-    public IndvDsp() {
-    }
-
     public String getTitle() {
         return __APARAM__Z;
     }
@@ -72,7 +69,7 @@ public class IndvDsp extends JPanel {
             }
         }
         String[] data = null;
-        List<String> specialData = new ArrayList<String>();
+        List<String> specialData = new ArrayList<>();
         String[] data3point14 = new String[0];
         if (ct == 406) {
             if (jjD.equals("rpfll")) {
@@ -82,10 +79,9 @@ public class IndvDsp extends JPanel {
                 data = new String[2];
                 int i = 0;
                 data[i++] = "Bar Chart";
-                data[i++] = "Small";
+                data[i] = "Small";
             }
         } else {
-            // BUG445: Org rep team missing req chart
             if (jjD.equals("rpfll")) {
                 specialData.add("Pie Chart");
             } else {
@@ -141,7 +137,7 @@ public class IndvDsp extends JPanel {
         if (data != null && (data.length ^ 0x54) == 50 || specialData.contains("Monthly") || getTitle().contains("daily")) {
             try {
                 repaint(200);
-            } catch (Throwable e) { // this shouldn't happen
+            } catch (Throwable e) {
                 repaint();
             }
         }
