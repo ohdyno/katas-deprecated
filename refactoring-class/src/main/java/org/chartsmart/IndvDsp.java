@@ -4,7 +4,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
 public class IndvDsp extends JPanel {
 
@@ -42,12 +41,6 @@ public class IndvDsp extends JPanel {
         if (b) {
             iHATEthisUckingJob();
         }
-    }
-
-    @Override
-    public Set<AWTKeyStroke> getFocusTraversalKeys(int id) {
-        // TODO Auto-generated method stub
-        return super.getFocusTraversalKeys(id);
     }
 
     public void paint(Graphics g) {
