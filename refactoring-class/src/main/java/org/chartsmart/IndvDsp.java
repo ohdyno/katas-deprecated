@@ -8,37 +8,10 @@ import java.util.List;
 import java.util.Set;
 
 public class IndvDsp extends JPanel {
-    private class Unit {
-        private String str_n2;
-        private double value;
-
-        public double convertTo(Unit unit) {
-            return 0;
-        }
-
-        public void setName(String name) {
-            this.str_n2 = name;
-        }
-
-        public String getName() {
-            return str_n2;
-        }
-
-        public void setValue(double v1) {
-            this.value = v1;
-        }
-
-        public double getValue() {
-            return value;
-        }
-    }
 
     private String jjD;
     private String __APARAM__Z;
-    private String[] horizontalLabelNames;
-    private String[] verticalLabelNames;
     private int ct;
-    private String chartTitle;
 
     /**
      * InitializeDrawArea
@@ -60,20 +33,11 @@ public class IndvDsp extends JPanel {
         }
     }
 
-    private Unit defaultUnits;
-
     public IndvDsp() {
     }
 
     public String getTitle() {
         return __APARAM__Z;
-    }
-
-    /**
-     * @return
-     */
-    private Unit horizontalNaming() {
-        return new Unit();
     }
 
     /**
