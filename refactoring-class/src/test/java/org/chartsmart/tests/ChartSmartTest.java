@@ -18,28 +18,28 @@ public class ChartSmartTest {
     @Test
     public void testBarChart() {
         IndvDsp cw = new IndvDsp();
-        cw.iniDS(406, "rpfll", true);
+        cw.initialize(406, "rpfll", true);
         Approvals.verify(cw);
     }
 
     @Test
     public void testBarChartCompare() {
         IndvDsp cw = new IndvDsp();
-        cw.iniDS(406, "shareddisplay", true);
+        cw.initialize(406, "shareddisplay", true);
         Approvals.verify(cw);
     }
 
     @Test
     public void testPieChart() {
         IndvDsp cw = new IndvDsp();
-        cw.iniDS(323, "rpfll", true);
+        cw.initialize(323, "rpfll", true);
         Approvals.verify(cw);
     }
 
     @Test
     public void testPieChartCompare() {
         IndvDsp cw = new IndvDsp();
-        cw.iniDS(323, "shareddisplay", true);
+        cw.initialize(323, "shareddisplay", true);
         Approvals.verify(cw);
     }
 }
