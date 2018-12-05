@@ -7,8 +7,17 @@ import java.util.List;
 
 public class ChartPanel extends JPanel {
 
-    private class PieChart {
-        String createTitle() {
+    private Chart chart;
+
+    private interface Chart {
+
+        void drawChart(Graphics graphics);
+
+        String createTitle();
+    }
+
+    private class PieChart implements Chart {
+        public String createTitle() {
             String title;
 
             if (displayType.equals(SINGLE_MODE)) {
@@ -19,7 +28,7 @@ public class ChartPanel extends JPanel {
             return title;
         }
 
-        void drawChart(Graphics graphics) {
+        public void drawChart(Graphics graphics) {
             if (displayType.equals(SINGLE_MODE)) {
                 graphics.setColor(Color.BLUE);
                 graphics.fillOval(100, 100, 450, getHeight() - 150);
@@ -55,8 +64,8 @@ public class ChartPanel extends JPanel {
         }
     }
 
-    private class BarChart {
-        String createTitle() {
+    private class BarChart implements Chart {
+        public String createTitle() {
             String title;
 
             if (displayType.equals(SINGLE_MODE)) {
@@ -67,7 +76,7 @@ public class ChartPanel extends JPanel {
             return title;
         }
 
-        void drawChart(Graphics graphics) {
+        public void drawChart(Graphics graphics) {
             if (displayType.equals(SINGLE_MODE)) {
                 graphics.setColor(Color.RED);
                 graphics.fillRect(100, 90, getWidth() - 200, 420);
@@ -124,15 +133,9 @@ public class ChartPanel extends JPanel {
     private String displayType;
     private String title;
 
-    private int chartType;
-
     private void createTitle() {
         this.setPreferredSize(new Dimension(600, 600));
-        if (chartType == BAR_CHART) {
-            title = new BarChart().createTitle();
-        } else {
-            title = new PieChart().createTitle();
-        }
+        title = chart.createTitle();
     }
 
     String getTitle() {
@@ -140,7 +143,12 @@ public class ChartPanel extends JPanel {
     }
 
     public void initialize(int chartType, String displayType, boolean shouldCreateTitle) {
-        this.chartType = chartType;
+        if (chartType == BAR_CHART) {
+            chart = new BarChart();
+        } else {
+            chart = new PieChart();
+        }
+
         this.displayType = displayType;
         if (shouldCreateTitle) {
             createTitle();
@@ -152,11 +160,7 @@ public class ChartPanel extends JPanel {
     }
 
     private void DrawChart(Graphics graphics) {
-        if (chartType == BAR_CHART) {
-            new BarChart().drawChart(graphics);
-        } else {
-            new PieChart().drawChart(graphics);
-        }
+        chart.drawChart(graphics);
     }
 
     private boolean isDataValid(String[] data) {
