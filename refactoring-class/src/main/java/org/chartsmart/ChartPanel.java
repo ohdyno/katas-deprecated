@@ -27,6 +27,31 @@ public class ChartPanel extends JPanel {
                 graphics.setColor(Color.BLUE);
                 graphics.fillOval(100, 100, 225, 225);
             }
+
+            List<String> specialData = new ArrayList<>();
+            String[] pieChartData = new String[0];
+
+            if (displayType.equals(SINGLE_MODE)) {
+                specialData.add("Pie Chart");
+            } else {
+                pieChartData = new String[2];
+                pieChartData[1] = "Small";
+                pieChartData[0] = "Pie" + " Chart";
+            }
+            if (displayType.equals(SINGLE_MODE)) {
+                graphics.setColor(Color.WHITE);
+                graphics.setFont(new Font("Bookman Old Style", Font.BOLD, 55));
+                graphics.drawString(specialData.get(0), 200, 340);
+            } else {
+                graphics.setFont(new Font("Bookman Old Style", Font.BOLD, 30));
+                graphics.setColor(Color.WHITE);
+                graphics.drawString(pieChartData[0], 145, 205);
+                graphics.drawString(pieChartData[1], 170, 235);
+            }
+            if (specialData.contains("Monthly") || getTitle().contains("daily")) {
+                repaint();
+            }
+
         }
     }
 
@@ -50,6 +75,46 @@ public class ChartPanel extends JPanel {
                 graphics.setColor(Color.BLACK);
                 graphics.fillRect(95, 95, 210, 210);
             }
+
+            String[] data = null;
+
+            if (displayType.equals(SINGLE_MODE)) {
+                data = new String[1];
+                data[0] = "Bar Chart";
+            } else {
+                data = new String[2];
+                data[0] = "Bar Chart";
+                data[1] = "Small";
+            }
+            if (displayType.equals(SHAREDDISPLAY)) {
+                if (data != null) {
+                    graphics.setColor(Color.CYAN);
+                    graphics.fillRect(100, 200, 40, 100);
+                    graphics.fillRect(140, 100, 40, 200);
+                    graphics.fillRect(180, 150, 40, 150);
+                    graphics.fillRect(220, 175, 40, 125);
+                    graphics.fillRect(260, 130, 40, 170);
+                    graphics.setColor(Color.RED);
+                    graphics.setFont(new Font("Arial Black", Font.BOLD, 25));
+                    graphics.drawString(data[0], 130, 250);
+                    graphics.drawString(data[1], 130, 270);
+                }
+            } else {
+                graphics.setColor(Color.CYAN);
+                graphics.fillRect(112, 300, 75, 200);
+                graphics.fillRect(187, 100, 75, 400);
+                graphics.fillRect(262, 200, 75, 300);
+                graphics.fillRect(337, 250, 75, 250);
+                graphics.fillRect(412, 160, 75, 340);
+                graphics.setColor(Color.BLACK);
+                graphics.setFont(new Font("Arial Black", Font.BOLD, 55));
+                graphics.drawString(data[0], 130, 400);
+            }
+
+            if (isDataValid(data) || getTitle().contains("daily")) {
+                repaint();
+            }
+
         }
     }
     public static final String SHAREDDISPLAY = "shareddisplay";
@@ -91,67 +156,6 @@ public class ChartPanel extends JPanel {
             new BarChart().drawChart(graphics);
         } else {
             new PieChart().drawChart(graphics);
-        }
-        String[] data = null;
-        List<String> specialData = new ArrayList<>();
-        String[] pieChartData = new String[0];
-        if (chartType == BAR_CHART) {
-            if (displayType.equals(SINGLE_MODE)) {
-                data = new String[1];
-                data[0] = "Bar Chart";
-            } else {
-                data = new String[2];
-                data[0] = "Bar Chart";
-                data[1] = "Small";
-            }
-        } else {
-            if (displayType.equals(SINGLE_MODE)) {
-                specialData.add("Pie Chart");
-            } else {
-                pieChartData = new String[2];
-                pieChartData[1] = "Small";
-                pieChartData[0] = "Pie" + " Chart";
-            }
-        }
-        if (chartType == BAR_CHART) {
-            if (displayType.equals(SHAREDDISPLAY)) {
-                if (data != null) {
-                    graphics.setColor(Color.CYAN);
-                    graphics.fillRect(100, 200, 40, 100);
-                    graphics.fillRect(140, 100, 40, 200);
-                    graphics.fillRect(180, 150, 40, 150);
-                    graphics.fillRect(220, 175, 40, 125);
-                    graphics.fillRect(260, 130, 40, 170);
-                    graphics.setColor(Color.RED);
-                    graphics.setFont(new Font("Arial Black", Font.BOLD, 25));
-                    graphics.drawString(data[0], 130, 250);
-                    graphics.drawString(data[1], 130, 270);
-                }
-            } else {
-                graphics.setColor(Color.CYAN);
-                graphics.fillRect(112, 300, 75, 200);
-                graphics.fillRect(187, 100, 75, 400);
-                graphics.fillRect(262, 200, 75, 300);
-                graphics.fillRect(337, 250, 75, 250);
-                graphics.fillRect(412, 160, 75, 340);
-                graphics.setColor(Color.BLACK);
-                graphics.setFont(new Font("Arial Black", Font.BOLD, 55));
-                graphics.drawString(data[0], 130, 400);
-            }
-        } else {
-            if (displayType.equals(SINGLE_MODE)) {
-                graphics.setColor(Color.WHITE);
-                graphics.setFont(new Font("Bookman Old Style", Font.BOLD, 55));
-                graphics.drawString(specialData.get(0), 200, 340);
-            } else {
-                graphics.setFont(new Font("Bookman Old Style", Font.BOLD, 30));
-                graphics.setColor(Color.WHITE);
-                graphics.drawString(pieChartData[0], 145, 205);
-                graphics.drawString(pieChartData[1], 170, 235);
-            }
-        }
-        if (isDataValid(data) || specialData.contains("Monthly") || getTitle().contains("daily")) {
-            repaint();
         }
     }
 
