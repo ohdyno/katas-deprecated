@@ -19,7 +19,7 @@ public class ChartPanel extends JPanel {
             return title;
         }
 
-        public void drawChart(Graphics graphics) {
+        void drawChart(Graphics graphics) {
             if (displayType.equals(SINGLE_MODE)) {
                 graphics.setColor(Color.BLUE);
                 graphics.fillOval(100, 100, 450, getHeight() - 150);
@@ -56,7 +56,7 @@ public class ChartPanel extends JPanel {
     }
 
     private class BarChart {
-        public String createTitle() {
+        String createTitle() {
             String title;
 
             if (displayType.equals(SINGLE_MODE)) {
@@ -67,7 +67,7 @@ public class ChartPanel extends JPanel {
             return title;
         }
 
-        public void drawChart(Graphics graphics) {
+        void drawChart(Graphics graphics) {
             if (displayType.equals(SINGLE_MODE)) {
                 graphics.setColor(Color.RED);
                 graphics.fillRect(100, 90, getWidth() - 200, 420);
@@ -76,7 +76,7 @@ public class ChartPanel extends JPanel {
                 graphics.fillRect(95, 95, 210, 210);
             }
 
-            String[] data = null;
+            String[] data;
 
             if (displayType.equals(SINGLE_MODE)) {
                 data = new String[1];
@@ -87,18 +87,16 @@ public class ChartPanel extends JPanel {
                 data[1] = "Small";
             }
             if (displayType.equals(SHAREDDISPLAY)) {
-                if (data != null) {
-                    graphics.setColor(Color.CYAN);
-                    graphics.fillRect(100, 200, 40, 100);
-                    graphics.fillRect(140, 100, 40, 200);
-                    graphics.fillRect(180, 150, 40, 150);
-                    graphics.fillRect(220, 175, 40, 125);
-                    graphics.fillRect(260, 130, 40, 170);
-                    graphics.setColor(Color.RED);
-                    graphics.setFont(new Font("Arial Black", Font.BOLD, 25));
-                    graphics.drawString(data[0], 130, 250);
-                    graphics.drawString(data[1], 130, 270);
-                }
+                graphics.setColor(Color.CYAN);
+                graphics.fillRect(100, 200, 40, 100);
+                graphics.fillRect(140, 100, 40, 200);
+                graphics.fillRect(180, 150, 40, 150);
+                graphics.fillRect(220, 175, 40, 125);
+                graphics.fillRect(260, 130, 40, 170);
+                graphics.setColor(Color.RED);
+                graphics.setFont(new Font("Arial Black", Font.BOLD, 25));
+                graphics.drawString(data[0], 130, 250);
+                graphics.drawString(data[1], 130, 270);
             } else {
                 graphics.setColor(Color.CYAN);
                 graphics.fillRect(112, 300, 75, 200);
@@ -117,7 +115,9 @@ public class ChartPanel extends JPanel {
 
         }
     }
-    public static final String SHAREDDISPLAY = "shareddisplay";
+
+
+    private static final String SHAREDDISPLAY = "shareddisplay";
     private final String SINGLE_MODE = "rpfll";
 
     private final int BAR_CHART = 406;
@@ -135,7 +135,7 @@ public class ChartPanel extends JPanel {
         }
     }
 
-    public String getTitle() {
+    String getTitle() {
         return title;
     }
 
