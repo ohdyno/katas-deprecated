@@ -18,6 +18,16 @@ public class ChartPanel extends JPanel {
             }
             return title;
         }
+
+        public void drawChart(Graphics graphics) {
+            if (displayType.equals(SINGLE_MODE)) {
+                graphics.setColor(Color.BLUE);
+                graphics.fillOval(100, 100, 450, getHeight() - 150);
+            } else {
+                graphics.setColor(Color.BLUE);
+                graphics.fillOval(100, 100, 225, 225);
+            }
+        }
     }
 
     private class BarChart {
@@ -32,6 +42,15 @@ public class ChartPanel extends JPanel {
             return title;
         }
 
+        public void drawChart(Graphics graphics) {
+            if (displayType.equals(SINGLE_MODE)) {
+                graphics.setColor(Color.RED);
+                graphics.fillRect(100, 90, getWidth() - 200, 420);
+            } else {
+                graphics.setColor(Color.BLACK);
+                graphics.fillRect(95, 95, 210, 210);
+            }
+        }
     }
     public static final String SHAREDDISPLAY = "shareddisplay";
     private final String SINGLE_MODE = "rpfll";
@@ -69,21 +88,9 @@ public class ChartPanel extends JPanel {
 
     private void DrawChart(Graphics graphics) {
         if (chartType == BAR_CHART) {
-            if (displayType.equals(SINGLE_MODE)) {
-                graphics.setColor(Color.RED);
-                graphics.fillRect(100, 90, getWidth() - 200, 420);
-            } else {
-                graphics.setColor(Color.BLACK);
-                graphics.fillRect(95, 95, 210, 210);
-            }
+            new BarChart().drawChart(graphics);
         } else {
-            if (displayType.equals(SINGLE_MODE)) {
-                graphics.setColor(Color.BLUE);
-                graphics.fillOval(100, 100, 450, getHeight() - 150);
-            } else {
-                graphics.setColor(Color.BLUE);
-                graphics.fillOval(100, 100, 225, 225);
-            }
+            new PieChart().drawChart(graphics);
         }
         String[] data = null;
         List<String> specialData = new ArrayList<>();
