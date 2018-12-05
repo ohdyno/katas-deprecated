@@ -5,11 +5,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 class PieChart implements Chart {
-    private ChartPanel chartPanel;
     private final String displayType;
 
-    PieChart(ChartPanel chartPanel, String displayType) {
-        this.chartPanel = chartPanel;
+    PieChart(String displayType) {
         this.displayType = displayType;
     }
 
@@ -24,13 +22,13 @@ class PieChart implements Chart {
         return title;
     }
 
-    public void drawChart(Graphics graphics) {
+    public void drawChart(Graphics graphics, int width, int height) {
         List<String> specialData = new ArrayList<>();
         String[] pieChartData;
 
         if (displayType.equals(SINGLE_MODE)) {
             graphics.setColor(Color.BLUE);
-            graphics.fillOval(100, 100, 450, chartPanel.getHeight() - 150);
+            graphics.fillOval(100, 100, 450, height - 150);
 
             specialData.add("Pie Chart");
 
@@ -49,11 +47,6 @@ class PieChart implements Chart {
             graphics.setColor(Color.WHITE);
             graphics.drawString(pieChartData[0], 145, 205);
             graphics.drawString(pieChartData[1], 170, 235);
-        }
-
-
-        if (specialData.contains("Monthly") || chartPanel.getTitle().contains("daily")) {
-            chartPanel.repaint();
         }
 
     }

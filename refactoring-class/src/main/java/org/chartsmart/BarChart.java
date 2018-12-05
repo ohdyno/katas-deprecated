@@ -3,11 +3,9 @@ package org.chartsmart;
 import java.awt.*;
 
 class BarChart implements Chart {
-    private ChartPanel chartPanel;
     private final String displayType;
 
-    BarChart(ChartPanel chartPanel, String displayType) {
-        this.chartPanel = chartPanel;
+    BarChart(String displayType) {
         this.displayType = displayType;
     }
 
@@ -22,12 +20,12 @@ class BarChart implements Chart {
         return title;
     }
 
-    public void drawChart(Graphics graphics) {
+    public void drawChart(Graphics graphics, int width, int height) {
         String[] data;
 
         if (displayType.equals(SINGLE_MODE)) {
             graphics.setColor(Color.RED);
-            graphics.fillRect(100, 90, chartPanel.getWidth() - 200, 420);
+            graphics.fillRect(100, 90, width - 200, 420);
 
             data = new String[1];
             data[0] = "Bar Chart";
@@ -60,14 +58,5 @@ class BarChart implements Chart {
             graphics.drawString(data[0], 130, 250);
             graphics.drawString(data[1], 130, 270);
         }
-
-        if (isDataValid(data) || chartPanel.getTitle().contains("daily")) {
-            chartPanel.repaint();
-        }
-
-    }
-
-    private boolean isDataValid(String[] data) {
-        return data != null && (data.length ^ 0x54) == 50;
     }
 }

@@ -9,9 +9,9 @@ public class ChartPanel extends JPanel {
 
     public void initialize(int chartType, String displayType, boolean shouldSetPreferredSize) {
         if (chartType == Chart.BAR_CHART) {
-            chart = new BarChart(this, displayType);
+            chart = new BarChart(displayType);
         } else {
-            chart = new PieChart(this, displayType);
+            chart = new PieChart(displayType);
         }
 
         if (shouldSetPreferredSize) {
@@ -20,7 +20,8 @@ public class ChartPanel extends JPanel {
     }
 
     public void paint(Graphics graphics) {
-        chart.drawChart(graphics);
+        chart.drawChart(graphics, getWidth(), getHeight());
+        repaint();
     }
 
     String getTitle() {
