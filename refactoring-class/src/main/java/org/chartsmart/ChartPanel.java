@@ -17,6 +17,12 @@ public class ChartPanel extends JPanel {
     }
 
     private class PieChart implements Chart {
+        private final String displayType;
+
+        PieChart(String displayType) {
+            this.displayType = displayType;
+        }
+
         public String createTitle() {
             String title;
 
@@ -65,6 +71,12 @@ public class ChartPanel extends JPanel {
     }
 
     private class BarChart implements Chart {
+        private final String displayType;
+
+        BarChart(String displayType) {
+            this.displayType = displayType;
+        }
+
         public String createTitle() {
             String title;
 
@@ -130,7 +142,6 @@ public class ChartPanel extends JPanel {
     private final String SINGLE_MODE = "rpfll";
 
     private final int BAR_CHART = 406;
-    private String displayType;
     private String title;
 
     private void createTitle() {
@@ -144,22 +155,17 @@ public class ChartPanel extends JPanel {
 
     public void initialize(int chartType, String displayType, boolean shouldCreateTitle) {
         if (chartType == BAR_CHART) {
-            chart = new BarChart();
+            chart = new BarChart(displayType);
         } else {
-            chart = new PieChart();
+            chart = new PieChart(displayType);
         }
 
-        this.displayType = displayType;
         if (shouldCreateTitle) {
             createTitle();
         }
     }
 
     public void paint(Graphics graphics) {
-        DrawChart(graphics);
-    }
-
-    private void DrawChart(Graphics graphics) {
         chart.drawChart(graphics);
     }
 
