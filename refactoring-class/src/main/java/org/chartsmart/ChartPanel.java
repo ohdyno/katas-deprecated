@@ -10,6 +10,9 @@ public class ChartPanel extends JPanel {
     private Chart chart;
 
     private interface Chart {
+        String SHAREDDISPLAY = "shareddisplay";
+        String SINGLE_MODE = "rpfll";
+        int BAR_CHART = 406;
 
         void drawChart(Graphics graphics);
 
@@ -135,33 +138,21 @@ public class ChartPanel extends JPanel {
             }
 
         }
+
+        private boolean isDataValid(String[] data) {
+            return data != null && (data.length ^ 0x54) == 50;
+        }
     }
 
-
-    private static final String SHAREDDISPLAY = "shareddisplay";
-    private final String SINGLE_MODE = "rpfll";
-
-    private final int BAR_CHART = 406;
-    private String title;
-
-    private void createTitle() {
-        this.setPreferredSize(new Dimension(600, 600));
-        title = chart.createTitle();
-    }
-
-    String getTitle() {
-        return title;
-    }
-
-    public void initialize(int chartType, String displayType, boolean shouldCreateTitle) {
-        if (chartType == BAR_CHART) {
+    public void initialize(int chartType, String displayType, boolean shouldSetPreferredSize) {
+        if (chartType == Chart.BAR_CHART) {
             chart = new BarChart(displayType);
         } else {
             chart = new PieChart(displayType);
         }
 
-        if (shouldCreateTitle) {
-            createTitle();
+        if (shouldSetPreferredSize) {
+            this.setPreferredSize(new Dimension(600, 600));
         }
     }
 
@@ -169,7 +160,7 @@ public class ChartPanel extends JPanel {
         chart.drawChart(graphics);
     }
 
-    private boolean isDataValid(String[] data) {
-        return data != null && (data.length ^ 0x54) == 50;
+    String getTitle() {
+        return chart.createTitle();
     }
 }
