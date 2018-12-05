@@ -7,28 +7,47 @@ import java.util.List;
 
 public class ChartPanel extends JPanel {
 
-    public static final String SHAREDDISPLAY = "shareddisplay";
-    private final String SINGLE_MODE = "rpfll";
-    private final int BAR_CHART = 406;
+    private class PieChart {
+        String createTitle() {
+            String title;
 
-    private String displayType;
-    private String title;
-    private int chartType;
-
-    private void createTitle() {
-        this.setPreferredSize(new Dimension(600, 600));
-        if (chartType == BAR_CHART) {
-            if (displayType.equals(SINGLE_MODE)) {
-                title = "Bar Chart - Single Mode";
-            } else {
-                title = "Bar" + " Chart - Compare Mode";
-            }
-        } else {
             if (displayType.equals(SINGLE_MODE)) {
                 title = "Pie Chart - Single Mode";
             } else {
                 title = "Pie Chart - Compare Mode";
             }
+            return title;
+        }
+    }
+
+    private class BarChart {
+        public String createTitle() {
+            String title;
+
+            if (displayType.equals(SINGLE_MODE)) {
+                title = "Bar Chart - Single Mode";
+            } else {
+                title = "Bar" + " Chart - Compare Mode";
+            }
+            return title;
+        }
+
+    }
+    public static final String SHAREDDISPLAY = "shareddisplay";
+    private final String SINGLE_MODE = "rpfll";
+
+    private final int BAR_CHART = 406;
+    private String displayType;
+    private String title;
+
+    private int chartType;
+
+    private void createTitle() {
+        this.setPreferredSize(new Dimension(600, 600));
+        if (chartType == BAR_CHART) {
+            title = new BarChart().createTitle();
+        } else {
+            title = new PieChart().createTitle();
         }
     }
 
