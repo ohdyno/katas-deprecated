@@ -46,8 +46,9 @@ public class ChartDrawer extends JPanel {
     }
 
     private void DrawChart(Graphics graphics) {
+        final String isSmallChartString = "rpfll";
         if (chartModeNumber == 406) {
-            if (chartMode.equals("rpfll")) {
+            if (chartMode.equals(isSmallChartString)) {
                 Color backgroundColor = Color.RED;
                 graphics.setColor(backgroundColor);
                 graphics.fillRect(100, 90, getWidth() - 200, 420);
@@ -56,7 +57,7 @@ public class ChartDrawer extends JPanel {
                 graphics.fillRect(95, 95, 210, 210);
             }
         } else {
-            if (chartMode.equals("rpfll")) {
+            if (chartMode.equals(isSmallChartString)) {
                 Color backgroundColor;
                 backgroundColor = Color.BLUE;
                 graphics.setColor(backgroundColor);
@@ -73,7 +74,7 @@ public class ChartDrawer extends JPanel {
         List<String> largePieChartData = new ArrayList<>();
         String[] smallPieChartData = new String[0];
         if (chartModeNumber == 406) {
-            if (chartMode.equals("rpfll")) {
+            if (chartMode.equals(isSmallChartString)) {
                 barChartData = new String[1];
                 barChartData[0] = "Bar Chart";
             } else {
@@ -83,7 +84,7 @@ public class ChartDrawer extends JPanel {
                 barChartData[i] = "Small";
             }
         } else {
-            if (chartMode.equals("rpfll")) {
+            if (chartMode.equals(isSmallChartString)) {
                 largePieChartData.add("Pie Chart");
             } else {
                 smallPieChartData = new String[2];
@@ -122,7 +123,7 @@ public class ChartDrawer extends JPanel {
                 graphics.drawString(barChartData[0], 130, 400);
             }
         } else {
-            if (chartMode.equals("rpfll")) {
+            if (chartMode.equals(isSmallChartString)) {
                 font = new Font("Bookman Old Style", Font.BOLD, 55);
                 graphics.setColor(Color.WHITE);
                 graphics.setFont(font);
