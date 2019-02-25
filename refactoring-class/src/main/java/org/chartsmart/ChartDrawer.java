@@ -46,9 +46,10 @@ public class ChartDrawer extends JPanel {
     }
 
     private void DrawChart(Graphics graphics) {
-        final String isSmallChartString = "rpfll";
-        if (chartModeNumber == 406) {
-            if (chartMode.equals(isSmallChartString)) {
+        final String isLargeChartNumberString = "rpfll";
+        final int isBarChartModeNumber = 406;
+        if (chartModeNumber == isBarChartModeNumber) {
+            if (chartMode.equals(isLargeChartNumberString)) {
                 Color backgroundColor = Color.RED;
                 graphics.setColor(backgroundColor);
                 graphics.fillRect(100, 90, getWidth() - 200, 420);
@@ -57,7 +58,7 @@ public class ChartDrawer extends JPanel {
                 graphics.fillRect(95, 95, 210, 210);
             }
         } else {
-            if (chartMode.equals(isSmallChartString)) {
+            if (chartMode.equals(isLargeChartNumberString)) {
                 Color backgroundColor;
                 backgroundColor = Color.BLUE;
                 graphics.setColor(backgroundColor);
@@ -73,8 +74,8 @@ public class ChartDrawer extends JPanel {
         String[] barChartData = null;
         List<String> largePieChartData = new ArrayList<>();
         String[] smallPieChartData = new String[0];
-        if (chartModeNumber == 406) {
-            if (chartMode.equals(isSmallChartString)) {
+        if (chartModeNumber == isBarChartModeNumber) {
+            if (chartMode.equals(isLargeChartNumberString)) {
                 barChartData = new String[1];
                 barChartData[0] = "Bar Chart";
             } else {
@@ -84,7 +85,7 @@ public class ChartDrawer extends JPanel {
                 barChartData[i] = "Small";
             }
         } else {
-            if (chartMode.equals(isSmallChartString)) {
+            if (chartMode.equals(isLargeChartNumberString)) {
                 largePieChartData.add("Pie Chart");
             } else {
                 smallPieChartData = new String[2];
@@ -93,7 +94,7 @@ public class ChartDrawer extends JPanel {
             }
         }
         Font font;
-        if (chartModeNumber == 406) {
+        if (chartModeNumber == isBarChartModeNumber) {
             if (chartMode.equals("shareddisplay")) {
                 if (barChartData != null) {
                     font = new Font("Arial Black", Font.BOLD, 25);
@@ -123,7 +124,7 @@ public class ChartDrawer extends JPanel {
                 graphics.drawString(barChartData[0], 130, 400);
             }
         } else {
-            if (chartMode.equals(isSmallChartString)) {
+            if (chartMode.equals(isLargeChartNumberString)) {
                 font = new Font("Bookman Old Style", Font.BOLD, 55);
                 graphics.setColor(Color.WHITE);
                 graphics.setFont(font);
