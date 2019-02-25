@@ -5,7 +5,7 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class IndvDsp extends JPanel {
+public class ChartDrawer extends JPanel {
 
 
     private String chartMode;
@@ -41,8 +41,8 @@ public class IndvDsp extends JPanel {
         }
     }
 
-    public void paint(Graphics g) {
-        DrawChart(g);
+    public void paint(Graphics graphics) {
+        DrawChart(graphics);
     }
 
     private void DrawChart(Graphics graphics) {
