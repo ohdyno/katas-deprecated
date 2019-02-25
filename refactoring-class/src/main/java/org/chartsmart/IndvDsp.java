@@ -48,8 +48,8 @@ public class IndvDsp extends JPanel {
     private void DrawChart(Graphics g) {
         if (chartModeNumber == 406) {
             if (chartMode.equals("rpfll")) {
-                Color bgc = Color.RED;
-                g.setColor(bgc);
+                Color backgroundColor = Color.RED;
+                g.setColor(backgroundColor);
                 g.fillRect(100, 90, getWidth() - 200, 420);
             } else {
                 g.setColor(Color.BLACK);
@@ -57,9 +57,9 @@ public class IndvDsp extends JPanel {
             }
         } else {
             if (chartMode.equals("rpfll")) {
-                Color bgcb;
-                bgcb = Color.BLUE;
-                g.setColor(bgcb);
+                Color backgroundColor;
+                backgroundColor = Color.BLUE;
+                g.setColor(backgroundColor);
                 g.fillOval(100, 100, 450, getHeight() - 150);
             } else {
                 g.setColor(Color.BLUE);
