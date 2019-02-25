@@ -8,8 +8,7 @@ import java.util.List;
 import java.util.Set;
 
 public class IndvDsp extends JPanel {
-    private class Unit {
-    }
+
 
     private String jjD;
     private String __APARAM__Z;
@@ -102,7 +101,6 @@ public class IndvDsp extends JPanel {
                 data[i++] = "Small";
             }
         } else {
-            // BUG445: Org rep team missing req chart
             if (jjD.equals("rpfll")) {
                 specialData.add("Pie Chart");
             } else {
