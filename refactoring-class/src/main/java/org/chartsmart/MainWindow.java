@@ -80,20 +80,20 @@ public class MainWindow extends JPanel
       else if (e.getSource() == btnShowPieOrBarChart)
       {
         ChartDrawer cw = new ChartDrawer();
-        cw.iniDS(getChartType(), "rpfll", true);
+        cw.initializeChartTypeAndChartMode(getChartType(), "rpfll", true);
         display(cw);
       }
       else
       {
         ChartDrawer cw = new ChartDrawer();
-        cw.iniDS(getChartType(), getDisplayType(), true);
+        cw.initializeChartTypeAndChartMode(getChartType(), getDisplayType(), true);
         display(cw);
       }
     }
     private void openBarChart()
     {
       ChartDrawer cw = new ChartDrawer();
-      cw.iniDS(406, "rpfll", true);
+      cw.initializeChartTypeAndChartMode(406, "rpfll", true);
       display(cw);
     }
 

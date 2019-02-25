@@ -18,28 +18,28 @@ public class ChartSmartTest {
     @Test
     public void testBarChart() {
         ChartDrawer cw = new ChartDrawer();
-        cw.iniDS(406, "rpfll", true);
+        cw.initializeChartTypeAndChartMode(406, "rpfll", true);
         Approvals.verify(cw);
     }
 
     @Test
     public void testBarChartCompare() {
         ChartDrawer cw = new ChartDrawer();
-        cw.iniDS(406, "shareddisplay", true);
+        cw.initializeChartTypeAndChartMode(406, "shareddisplay", true);
         Approvals.verify(cw);
     }
 
     @Test
     public void testPieChart() {
         ChartDrawer cw = new ChartDrawer();
-        cw.iniDS(323, "rpfll", true);
+        cw.initializeChartTypeAndChartMode(323, "rpfll", true);
         Approvals.verify(cw);
     }
 
     @Test
     public void testPieChartCompare() {
         ChartDrawer cw = new ChartDrawer();
-        cw.iniDS(323, "shareddisplay", true);
+        cw.initializeChartTypeAndChartMode(323, "shareddisplay", true);
         Approvals.verify(cw);
     }
 }
