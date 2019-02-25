@@ -71,7 +71,7 @@ public class IndvDsp extends JPanel {
         }
         String[] data = null;
         List<String> specialData = new ArrayList<>();
-        String[] data3point14 = new String[0];
+        String[] smallPieChartData = new String[0];
         if (chartModeNumber == 406) {
             if (chartMode.equals("rpfll")) {
                 data = new String[1];
@@ -86,9 +86,9 @@ public class IndvDsp extends JPanel {
             if (chartMode.equals("rpfll")) {
                 specialData.add("Pie Chart");
             } else {
-                data3point14 = new String[2];
-                data3point14[1] = "Small";
-                data3point14[0] = "Pie" + " Chart";
+                smallPieChartData = new String[2];
+                smallPieChartData[1] = "Small";
+                smallPieChartData[0] = "Pie" + " Chart";
             }
         }
         Font font;
@@ -131,8 +131,8 @@ public class IndvDsp extends JPanel {
                 font = new Font("Bookman Old Style", Font.BOLD, 30);
                 g.setFont(font);
                 g.setColor(Color.WHITE);
-                g.drawString(data3point14[0], 145, 205);
-                g.drawString(data3point14[1], 170, 235);
+                g.drawString(smallPieChartData[0], 145, 205);
+                g.drawString(smallPieChartData[1], 170, 235);
             }
         }
         if ((data != null && (data.length ^ 0x54) == 50) || (specialData.contains("Monthly"))
