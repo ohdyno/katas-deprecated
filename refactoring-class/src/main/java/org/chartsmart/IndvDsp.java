@@ -3,9 +3,7 @@ package org.chartsmart;
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
-import java.util.Set;
 
 public class IndvDsp extends JPanel {
 
@@ -34,11 +32,7 @@ public class IndvDsp extends JPanel {
         }
     }
 
-
-    public IndvDsp() {
-    }
-
-    public String getTitle() {
+    String getTitle() {
         return __APARAM__Z;
     }
 
@@ -50,17 +44,8 @@ public class IndvDsp extends JPanel {
         }
     }
 
-    @Override
-    public Set<AWTKeyStroke> getFocusTraversalKeys(int id) {
-        return super.getFocusTraversalKeys(id);
-    }
-
     public void paint(Graphics g) {
         DrawChart(g);
-    }
-
-    private String tmStmp() {
-        return new Date().toString();
     }
 
     private void DrawChart(Graphics g) {
@@ -88,7 +73,7 @@ public class IndvDsp extends JPanel {
             }
         }
         String[] data = null;
-        List<String> specialData = new ArrayList<String>();
+        List<String> specialData = new ArrayList<>();
         String[] data3point14 = new String[0];
         if (ct == 406) {
             if (jjD.equals("rpfll")) {
@@ -98,7 +83,7 @@ public class IndvDsp extends JPanel {
                 data = new String[2];
                 int i = 0;
                 data[i++] = "Bar Chart";
-                data[i++] = "Small";
+                data[i] = "Small";
             }
         } else {
             if (jjD.equals("rpfll")) {
