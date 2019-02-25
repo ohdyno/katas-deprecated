@@ -8,35 +8,35 @@ import java.util.List;
 public class IndvDsp extends JPanel {
 
 
-    private String jjD;
-    private String __APARAM__Z;
+    private String chartMode;
+    private String chartTitle;
     private int chartModeNumber;
 
     private void initializeDrawArea() {
         this.setPreferredSize(new Dimension(600, 600));
         if (chartModeNumber == 406) {
-            if (jjD.equals("rpfll")) {
-                __APARAM__Z = "Bar Chart - Single Mode";
+            if (chartMode.equals("rpfll")) {
+                chartTitle = "Bar Chart - Single Mode";
             } else {
-                __APARAM__Z = "Bar" + " Chart - Compare Mode";
+                chartTitle = "Bar" + " Chart - Compare Mode";
             }
         } else {
-            if (jjD.equals("rpfll")) {
-                __APARAM__Z = "Pie Chart - Single Mode";
+            if (chartMode.equals("rpfll")) {
+                chartTitle = "Pie Chart - Single Mode";
             } else {
-                __APARAM__Z = "Pie Chart - Compare Mode";
+                chartTitle = "Pie Chart - Compare Mode";
             }
         }
     }
 
     String getTitle() {
-        return __APARAM__Z;
+        return chartTitle;
     }
 
-    public void iniDS(int ct, String stjjDReq1205, boolean b) {
-        this.chartModeNumber = ct;
-        this.jjD = stjjDReq1205;
-        if (b) {
+    public void iniDS(int chartModeNumber, String chartMode, boolean initializeFlag) {
+        this.chartModeNumber = chartModeNumber;
+        this.chartMode = chartMode;
+        if (initializeFlag) {
             initializeDrawArea();
         }
     }
@@ -47,7 +47,7 @@ public class IndvDsp extends JPanel {
 
     private void DrawChart(Graphics g) {
         if (chartModeNumber == 406) {
-            if (jjD.equals("rpfll")) {
+            if (chartMode.equals("rpfll")) {
                 Color bgc = Color.RED;
                 g.setColor(bgc);
                 g.fillRect(100, 90, getWidth() - 200, 420);
@@ -56,7 +56,7 @@ public class IndvDsp extends JPanel {
                 g.fillRect(95, 95, 210, 210);
             }
         } else {
-            if (jjD.equals("rpfll")) {
+            if (chartMode.equals("rpfll")) {
                 Color bgcb;
                 bgcb = Color.BLUE;
                 g.setColor(bgcb);
@@ -73,7 +73,7 @@ public class IndvDsp extends JPanel {
         List<String> specialData = new ArrayList<>();
         String[] data3point14 = new String[0];
         if (chartModeNumber == 406) {
-            if (jjD.equals("rpfll")) {
+            if (chartMode.equals("rpfll")) {
                 data = new String[1];
                 data[0] = "Bar Chart";
             } else {
@@ -83,7 +83,7 @@ public class IndvDsp extends JPanel {
                 data[i] = "Small";
             }
         } else {
-            if (jjD.equals("rpfll")) {
+            if (chartMode.equals("rpfll")) {
                 specialData.add("Pie Chart");
             } else {
                 data3point14 = new String[2];
@@ -93,7 +93,7 @@ public class IndvDsp extends JPanel {
         }
         Font font;
         if (chartModeNumber == 406) {
-            if (jjD.equals("shareddisplay")) {
+            if (chartMode.equals("shareddisplay")) {
                 if (data != null) {
                     font = new Font("Arial Black", Font.BOLD, 25);
                     g.setColor(Color.CYAN);
@@ -122,7 +122,7 @@ public class IndvDsp extends JPanel {
                 g.drawString(data[0], 130, 400);
             }
         } else {
-            if (jjD.equals("rpfll")) {
+            if (chartMode.equals("rpfll")) {
                 font = new Font("Bookman Old Style", Font.BOLD, 55);
                 g.setColor(Color.WHITE);
                 g.setFont(font);
