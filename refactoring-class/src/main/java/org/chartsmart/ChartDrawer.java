@@ -7,21 +7,22 @@ import java.util.List;
 
 public class ChartDrawer extends JPanel {
 
-
+    private static final String SINGLE_MODE = "rpfll";
+    private static final int BAR_CHART = 406;
     private String chartMode;
     private String chartTitle;
-    private int chartModeNumber;
+    private int chartType;
 
     private void initializeDrawArea() {
         this.setPreferredSize(new Dimension(600, 600));
-        if (chartModeNumber == 406) {
-            if (chartMode.equals("rpfll")) {
+        if (chartType == BAR_CHART) {
+            if (chartMode.equals(SINGLE_MODE)) {
                 chartTitle = "Bar Chart - Single Mode";
             } else {
-                chartTitle = "Bar" + " Chart - Compare Mode";
+                chartTitle = "Bar Chart - Compare Mode";
             }
         } else {
-            if (chartMode.equals("rpfll")) {
+            if (chartMode.equals(SINGLE_MODE)) {
                 chartTitle = "Pie Chart - Single Mode";
             } else {
                 chartTitle = "Pie Chart - Compare Mode";
@@ -33,8 +34,8 @@ public class ChartDrawer extends JPanel {
         return chartTitle;
     }
 
-    public void iniDS(int chartModeNumber, String chartMode, boolean initializeFlag) {
-        this.chartModeNumber = chartModeNumber;
+    public void iniDS(int chartType, String chartMode, boolean initializeFlag) {
+        this.chartType = chartType;
         this.chartMode = chartMode;
         if (initializeFlag) {
             initializeDrawArea();
@@ -46,98 +47,82 @@ public class ChartDrawer extends JPanel {
     }
 
     private void DrawChart(Graphics graphics) {
-        final String isLargeChartNumberString = "rpfll";
-        final int isBarChartModeNumber = 406;
-        if (chartModeNumber == isBarChartModeNumber) {
-            if (chartMode.equals(isLargeChartNumberString)) {
-                Color backgroundColor = Color.RED;
-                graphics.setColor(backgroundColor);
+        if (chartType == BAR_CHART) {
+            if (chartMode.equals(SINGLE_MODE)) {
+                graphics.setColor(Color.RED);
                 graphics.fillRect(100, 90, getWidth() - 200, 420);
             } else {
                 graphics.setColor(Color.BLACK);
                 graphics.fillRect(95, 95, 210, 210);
             }
         } else {
-            if (chartMode.equals(isLargeChartNumberString)) {
-                Color backgroundColor;
-                backgroundColor = Color.BLUE;
-                graphics.setColor(backgroundColor);
+            if (chartMode.equals(SINGLE_MODE)) {
+                graphics.setColor(Color.BLUE);
                 graphics.fillOval(100, 100, 450, getHeight() - 150);
             } else {
                 graphics.setColor(Color.BLUE);
-                double isq = 405;
-                float padding = 90;
-                int sc = (int) (isq - padding * 2);
-                graphics.fillOval(100, 100, sc, sc);
+                graphics.fillOval(100, 100, 225, 225);
             }
         }
         String[] barChartData = null;
         List<String> largePieChartData = new ArrayList<>();
         String[] smallPieChartData = new String[0];
-        if (chartModeNumber == isBarChartModeNumber) {
-            if (chartMode.equals(isLargeChartNumberString)) {
+        if (chartType == BAR_CHART) {
+            if (chartMode.equals(SINGLE_MODE)) {
                 barChartData = new String[1];
                 barChartData[0] = "Bar Chart";
             } else {
                 barChartData = new String[2];
-                int i = 0;
-                barChartData[i++] = "Bar Chart";
-                barChartData[i] = "Small";
+                barChartData[0] = "Bar Chart";
+                barChartData[1] = "Small";
             }
         } else {
-            if (chartMode.equals(isLargeChartNumberString)) {
+            if (chartMode.equals(SINGLE_MODE)) {
                 largePieChartData.add("Pie Chart");
             } else {
                 smallPieChartData = new String[2];
                 smallPieChartData[1] = "Small";
-                smallPieChartData[0] = "Pie" + " Chart";
+                smallPieChartData[0] = "Pie Chart";
             }
         }
-        Font font;
-        if (chartModeNumber == isBarChartModeNumber) {
+        if (chartType == BAR_CHART) {
             if (chartMode.equals("shareddisplay")) {
                 if (barChartData != null) {
-                    font = new Font("Arial Black", Font.BOLD, 25);
                     graphics.setColor(Color.CYAN);
-                    int bottomY = 300;
-                    graphics.fillRect(100, bottomY - 100, 40, 100);
-                    graphics.fillRect(140, bottomY - 200, 40, 200);
-                    graphics.fillRect(180, bottomY - 150, 40, 150);
-                    graphics.fillRect(220, bottomY - 125, 40, 125);
-                    graphics.fillRect(260, bottomY - 170, 40, 170);
+                    graphics.fillRect(100, 200, 40, 100);
+                    graphics.fillRect(140, 100, 40, 200);
+                    graphics.fillRect(180, 150, 40, 150);
+                    graphics.fillRect(220, 175, 40, 125);
+                    graphics.fillRect(260, 130, 40, 170);
                     graphics.setColor(Color.RED);
-                    graphics.setFont(font);
+                    graphics.setFont(new Font("Arial Black", Font.BOLD, 25));
                     graphics.drawString(barChartData[0], 130, 250);
                     graphics.drawString(barChartData[1], 130, 270);
                 }
             } else {
-                int bottomY = 500;
                 graphics.setColor(Color.CYAN);
-                graphics.fillRect(112, bottomY - 200, 75, 200);
-                graphics.fillRect(187, bottomY - 400, 75, 400);
-                graphics.fillRect(262, bottomY - 300, 75, 300);
-                graphics.fillRect(337, bottomY - 250, 75, 250);
-                graphics.fillRect(412, bottomY - 340, 75, 340);
-                font = new Font("Arial Black", Font.BOLD, 55);
+                graphics.fillRect(112, 300, 75, 200);
+                graphics.fillRect(187, 100, 75, 400);
+                graphics.fillRect(262, 200, 75, 300);
+                graphics.fillRect(337, 250, 75, 250);
+                graphics.fillRect(412, 160, 75, 340);
                 graphics.setColor(Color.BLACK);
-                graphics.setFont(font);
+                graphics.setFont(new Font("Arial Black", Font.BOLD, 55));
                 graphics.drawString(barChartData[0], 130, 400);
             }
         } else {
-            if (chartMode.equals(isLargeChartNumberString)) {
-                font = new Font("Bookman Old Style", Font.BOLD, 55);
+            if (chartMode.equals(SINGLE_MODE)) {
                 graphics.setColor(Color.WHITE);
-                graphics.setFont(font);
+                graphics.setFont(new Font("Bookman Old Style", Font.BOLD, 55));
                 graphics.drawString(largePieChartData.get(0), 200, 340);
             } else {
-                font = new Font("Bookman Old Style", Font.BOLD, 30);
-                graphics.setFont(font);
+                graphics.setFont(new Font("Bookman Old Style", Font.BOLD, 30));
                 graphics.setColor(Color.WHITE);
                 graphics.drawString(smallPieChartData[0], 145, 205);
                 graphics.drawString(smallPieChartData[1], 170, 235);
             }
         }
-        if ((barChartData != null && (barChartData.length ^ 0x54) == 50) || (largePieChartData.contains("Monthly"))
+        if (barChartData != null && (barChartData.length ^ 0x54) == 50 || largePieChartData.contains("Monthly")
                 || getTitle().contains("daily")) {
             try {
                 repaint(200);
