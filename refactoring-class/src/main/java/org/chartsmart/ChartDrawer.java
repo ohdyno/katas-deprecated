@@ -2,8 +2,6 @@ package org.chartsmart;
 
 import javax.swing.*;
 import java.awt.*;
-import java.util.ArrayList;
-import java.util.List;
 
 public class ChartDrawer extends JPanel {
 
@@ -41,28 +39,9 @@ public class ChartDrawer extends JPanel {
     public void paint(Graphics graphics) {
         if (chartType == BAR_CHART) {
             new BarChart().drawBarChart(graphics, chartMode.equals(SINGLE_MODE), getWidth());
-            repaintChart();
         } else {
-            drawPieChart(graphics);
+            new PieChart().drawPieChart(graphics, chartMode.equals(SINGLE_MODE), getHeight());
         }
-    }
-
-    private void drawPieChart(Graphics graphics) {
-        setPieChartColor(graphics);
-        setPieChartHeader(graphics);
-    }
-
-    private void setPieChartHeader(Graphics graphics) {
-        List<String> largePieChartTitle = new ArrayList<>();
-        String[] smallPieChartTitle = new String[0];
-        if (chartMode.equals(SINGLE_MODE)) {
-            largePieChartTitle.add("Pie Chart");
-        } else {
-            smallPieChartTitle = new String[2];
-            smallPieChartTitle[1] = "Small";
-            smallPieChartTitle[0] = "Pie Chart";
-        }
-        drawPieChartData(graphics, largePieChartTitle, smallPieChartTitle);
         repaintChart();
     }
 
@@ -74,28 +53,5 @@ public class ChartDrawer extends JPanel {
         }
     }
 
-
-    private void drawPieChartData(Graphics graphics, List<String> largePieChartData, String[] smallPieChartData) {
-        if (chartMode.equals(SINGLE_MODE)) {
-            graphics.setColor(Color.WHITE);
-            graphics.setFont(new Font("Bookman Old Style", Font.BOLD, 55));
-            graphics.drawString(largePieChartData.get(0), 200, 340);
-        } else {
-            graphics.setFont(new Font("Bookman Old Style", Font.BOLD, 30));
-            graphics.setColor(Color.WHITE);
-            graphics.drawString(smallPieChartData[0], 145, 205);
-            graphics.drawString(smallPieChartData[1], 170, 235);
-        }
-    }
-
-    private void setPieChartColor(Graphics graphics) {
-        if (chartMode.equals(SINGLE_MODE)) {
-            graphics.setColor(Color.BLUE);
-            graphics.fillOval(100, 100, 450, getHeight() - 150);
-        } else {
-            graphics.setColor(Color.BLUE);
-            graphics.fillOval(100, 100, 225, 225);
-        }
-    }
 
 }
