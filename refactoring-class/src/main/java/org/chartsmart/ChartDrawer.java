@@ -55,16 +55,11 @@ public class ChartDrawer extends JPanel {
     }
 
     public void paint(Graphics graphics) {
-        drawChart(graphics);
-    }
-
-    private void drawChart(Graphics graphics) {
         if (chartType == BAR_CHART) {
             drawBarChart(graphics);
         } else {
             drawPieChart(graphics);
         }
-
     }
 
     private void drawPieChart(Graphics graphics) {
