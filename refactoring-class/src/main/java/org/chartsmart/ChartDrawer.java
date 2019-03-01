@@ -47,15 +47,13 @@ public class ChartDrawer extends JPanel {
     }
 
     public void paint(Graphics graphics) {
-        DrawChart(graphics);
+        drawChart(graphics);
     }
 
-    private void DrawChart(Graphics graphics) {
+    private void drawChart(Graphics graphics) {
         setChartColor(graphics);
-        String[] barChartTitle = null;
-        List<String> largePieChartTitle = new ArrayList<>();
-        String[] smallPieChartTitle = new String[0];
         if (chartType == BAR_CHART) {
+            String[] barChartTitle = null;
             if (chartMode.equals(SINGLE_MODE)) {
                 barChartTitle = new String[1];
                 barChartTitle[0] = "Bar Chart";
@@ -65,7 +63,10 @@ public class ChartDrawer extends JPanel {
                 barChartTitle[1] = "Small";
             }
             drawBarChartData(graphics, barChartTitle);
+            repaintBarChart(barChartTitle);
         } else {
+            List<String> largePieChartTitle = new ArrayList<>();
+            String[] smallPieChartTitle = new String[0];
             if (chartMode.equals(SINGLE_MODE)) {
                 largePieChartTitle.add("Pie Chart");
             } else {
@@ -74,19 +75,35 @@ public class ChartDrawer extends JPanel {
                 smallPieChartTitle[0] = "Pie Chart";
             }
             drawPieChartData(graphics, largePieChartTitle, smallPieChartTitle);
+            repaintPieChart(largePieChartTitle);
         }
 
+    }
+
+    private void repaintBarChart(String[] barChartTitle) {
         final boolean hasBarChartData = barChartTitle != null && (barChartTitle.length ^ 0x54) == 50;
-        final boolean isMonthly = largePieChartTitle.contains("Monthly");
         final boolean isDaily = getTitle().contains("daily");
-        if (hasBarChartData || isMonthly || isDaily) {
-            try {
-                repaint(200);
-            } catch (Throwable e) {
-                repaint();
-            }
+        if (hasBarChartData || isDaily) {
+            repaintChart();
         }
     }
+
+    private void repaintChart() {
+        try {
+            repaint(200);
+        } catch (Throwable e) {
+            repaint();
+        }
+    }
+
+    private void repaintPieChart(List<String> largePieChartTitle) {
+        final boolean isMonthly = largePieChartTitle.contains("Monthly");
+        final boolean isDaily = getTitle().contains("daily");
+        if (isMonthly || isDaily) {
+            repaintChart();
+        }
+    }
+
 
     private void drawPieChartData(Graphics graphics, List<String> largePieChartData, String[] smallPieChartData) {
         if (chartMode.equals(SINGLE_MODE)) {
