@@ -54,7 +54,7 @@ public class ChartDrawer extends JPanel {
 
     private void drawBarChart(Graphics graphics) {
         new BarChart().setBarChartColor(graphics, chartMode.equals(SINGLE_MODE), getWidth());
-        setBarChartHeader(new BarChart(), graphics, chartMode.equals(SINGLE_MODE));
+        new BarChart().setBarChartHeader(graphics, chartMode.equals(SINGLE_MODE));
     }
 
     private void setPieChartHeader(Graphics graphics) {
@@ -69,40 +69,6 @@ public class ChartDrawer extends JPanel {
         }
         drawPieChartData(graphics, largePieChartTitle, smallPieChartTitle);
         repaintChart();
-    }
-
-    private void setBarChartHeader(BarChart barChart, Graphics graphics, boolean isSingleMode) {
-        String[] barChartTitle;
-        if (isSingleMode) {
-            barChartTitle = new String[1];
-            barChartTitle[0] = "Bar Chart";
-        } else {
-            barChartTitle = new String[2];
-            barChartTitle[0] = "Bar Chart";
-            barChartTitle[1] = "Small";
-        }
-        if (chartMode.equals(SINGLE_MODE)) {
-            graphics.setColor(Color.CYAN);
-            graphics.fillRect(112, 300, 75, 200);
-            graphics.fillRect(187, 100, 75, 400);
-            graphics.fillRect(262, 200, 75, 300);
-            graphics.fillRect(337, 250, 75, 250);
-            graphics.fillRect(412, 160, 75, 340);
-            graphics.setColor(Color.BLACK);
-            graphics.setFont(new Font("Arial Black", Font.BOLD, 55));
-            graphics.drawString(barChartTitle[0], 130, 400);
-        } else {
-            graphics.setColor(Color.CYAN);
-            graphics.fillRect(100, 200, 40, 100);
-            graphics.fillRect(140, 100, 40, 200);
-            graphics.fillRect(180, 150, 40, 150);
-            graphics.fillRect(220, 175, 40, 125);
-            graphics.fillRect(260, 130, 40, 170);
-            graphics.setColor(Color.RED);
-            graphics.setFont(new Font("Arial Black", Font.BOLD, 25));
-            graphics.drawString(barChartTitle[0], 130, 250);
-            graphics.drawString(barChartTitle[1], 130, 270);
-        }
     }
 
     private void repaintChart() {
