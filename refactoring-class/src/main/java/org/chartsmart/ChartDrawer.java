@@ -59,13 +59,22 @@ public class ChartDrawer extends JPanel {
     }
 
     private void drawChart(Graphics graphics) {
-        setChartColor(graphics);
         if (chartType == BAR_CHART) {
-            setBarChartHeader(graphics);
+            drawBarChart(graphics);
         } else {
-            setPieChartHeader(graphics);
+            drawPieChart(graphics);
         }
 
+    }
+
+    private void drawPieChart(Graphics graphics) {
+        setPieChartColor(graphics);
+        setPieChartHeader(graphics);
+    }
+
+    private void drawBarChart(Graphics graphics) {
+        setBarChartColor(graphics);
+        setBarChartHeader(graphics);
     }
 
     private void setPieChartHeader(Graphics graphics) {
@@ -158,14 +167,6 @@ public class ChartDrawer extends JPanel {
                 graphics.drawString(barChartData[0], 130, 250);
                 graphics.drawString(barChartData[1], 130, 270);
             }
-        }
-    }
-
-    private void setChartColor(Graphics graphics) {
-        if (chartType == BAR_CHART) {
-            setBarChartColor(graphics);
-        } else {
-            setPieChartColor(graphics);
         }
     }
 
