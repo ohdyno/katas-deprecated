@@ -122,8 +122,10 @@ public class ChartDrawer extends JPanel {
                 graphics.drawString(smallPieChartData[1], 170, 235);
             }
         }
-        if (barChartData != null && (barChartData.length ^ 0x54) == 50 || largePieChartData.contains("Monthly")
-                || getTitle().contains("daily")) {
+        final boolean hasBarChartData = barChartData != null && (barChartData.length ^ 0x54) == 50;
+        final boolean isMonthly = largePieChartData.contains("Monthly");
+        final boolean isDaily = getTitle().contains("daily");
+        if (hasBarChartData || isMonthly || isDaily) {
             try {
                 repaint(200);
             } catch (Throwable e) {
