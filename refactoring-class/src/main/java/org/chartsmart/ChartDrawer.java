@@ -52,8 +52,8 @@ public class ChartDrawer extends JPanel {
     }
 
     private void drawBarChart(Graphics graphics) {
-        setBarChartColor(graphics);
-        setBarChartHeader(graphics);
+        new BarChart().setBarChartColor(graphics, chartMode.equals(SINGLE_MODE), getWidth());
+        setBarChartHeader(new BarChart(), graphics, chartMode.equals(SINGLE_MODE));
     }
 
     private void setPieChartHeader(Graphics graphics) {
@@ -70,9 +70,9 @@ public class ChartDrawer extends JPanel {
         repaintPieChart(largePieChartTitle);
     }
 
-    private void setBarChartHeader(Graphics graphics) {
+    private void setBarChartHeader(BarChart barChart, Graphics graphics, boolean isSingleMode) {
         String[] barChartTitle;
-        if (chartMode.equals(SINGLE_MODE)) {
+        if (isSingleMode) {
             barChartTitle = new String[1];
             barChartTitle[0] = "Bar Chart";
         } else {
@@ -80,16 +80,29 @@ public class ChartDrawer extends JPanel {
             barChartTitle[0] = "Bar Chart";
             barChartTitle[1] = "Small";
         }
-        drawBarChartData(graphics, barChartTitle);
-        repaintBarChart(barChartTitle);
-    }
-
-    private void repaintBarChart(String[] barChartTitle) {
-        final boolean hasBarChartData = barChartTitle != null && (barChartTitle.length ^ 0x54) == 50;
-        final boolean isDaily = getTitle().contains("daily");
-        if (hasBarChartData || isDaily) {
-            repaintChart();
+        if (chartMode.equals(SINGLE_MODE)) {
+            graphics.setColor(Color.CYAN);
+            graphics.fillRect(112, 300, 75, 200);
+            graphics.fillRect(187, 100, 75, 400);
+            graphics.fillRect(262, 200, 75, 300);
+            graphics.fillRect(337, 250, 75, 250);
+            graphics.fillRect(412, 160, 75, 340);
+            graphics.setColor(Color.BLACK);
+            graphics.setFont(new Font("Arial Black", Font.BOLD, 55));
+            graphics.drawString(barChartTitle[0], 130, 400);
+        } else {
+            graphics.setColor(Color.CYAN);
+            graphics.fillRect(100, 200, 40, 100);
+            graphics.fillRect(140, 100, 40, 200);
+            graphics.fillRect(180, 150, 40, 150);
+            graphics.fillRect(220, 175, 40, 125);
+            graphics.fillRect(260, 130, 40, 170);
+            graphics.setColor(Color.RED);
+            graphics.setFont(new Font("Arial Black", Font.BOLD, 25));
+            graphics.drawString(barChartTitle[0], 130, 250);
+            graphics.drawString(barChartTitle[1], 130, 270);
         }
+        repaintChart();
     }
 
     private void repaintChart() {
@@ -122,33 +135,6 @@ public class ChartDrawer extends JPanel {
         }
     }
 
-    private void drawBarChartData(Graphics graphics, String[] barChartData) {
-        if (chartMode.equals(SINGLE_MODE)) {
-            graphics.setColor(Color.CYAN);
-            graphics.fillRect(112, 300, 75, 200);
-            graphics.fillRect(187, 100, 75, 400);
-            graphics.fillRect(262, 200, 75, 300);
-            graphics.fillRect(337, 250, 75, 250);
-            graphics.fillRect(412, 160, 75, 340);
-            graphics.setColor(Color.BLACK);
-            graphics.setFont(new Font("Arial Black", Font.BOLD, 55));
-            graphics.drawString(barChartData[0], 130, 400);
-        } else {
-            if (barChartData != null) {
-                graphics.setColor(Color.CYAN);
-                graphics.fillRect(100, 200, 40, 100);
-                graphics.fillRect(140, 100, 40, 200);
-                graphics.fillRect(180, 150, 40, 150);
-                graphics.fillRect(220, 175, 40, 125);
-                graphics.fillRect(260, 130, 40, 170);
-                graphics.setColor(Color.RED);
-                graphics.setFont(new Font("Arial Black", Font.BOLD, 25));
-                graphics.drawString(barChartData[0], 130, 250);
-                graphics.drawString(barChartData[1], 130, 270);
-            }
-        }
-    }
-
     private void setPieChartColor(Graphics graphics) {
         if (chartMode.equals(SINGLE_MODE)) {
             graphics.setColor(Color.BLUE);
@@ -159,13 +145,4 @@ public class ChartDrawer extends JPanel {
         }
     }
 
-    private void setBarChartColor(Graphics graphics) {
-        if (chartMode.equals(SINGLE_MODE)) {
-            graphics.setColor(Color.RED);
-            graphics.fillRect(100, 90, getWidth() - 200, 420);
-        } else {
-            graphics.setColor(Color.BLACK);
-            graphics.fillRect(95, 95, 210, 210);
-        }
-    }
 }
