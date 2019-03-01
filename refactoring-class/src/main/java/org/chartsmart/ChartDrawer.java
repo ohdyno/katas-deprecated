@@ -38,9 +38,9 @@ public class ChartDrawer extends JPanel {
 
     public void paint(Graphics graphics) {
         if (chartType == BAR_CHART) {
-            new BarChart().drawBarChart(graphics, chartMode.equals(SINGLE_MODE), getWidth());
+            new BarChart().draw(graphics, chartMode.equals(SINGLE_MODE), getWidth());
         } else {
-            new PieChart().drawPieChart(graphics, chartMode.equals(SINGLE_MODE), getHeight());
+            new PieChart().draw(graphics, chartMode.equals(SINGLE_MODE), getHeight());
         }
         repaintChart();
     }
@@ -52,6 +52,4 @@ public class ChartDrawer extends JPanel {
             repaint();
         }
     }
-
-
 }

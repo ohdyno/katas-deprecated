@@ -11,7 +11,7 @@ public class BarChart {
         }
     }
 
-    void setBarChartColor(Graphics graphics, boolean isSingleMode, int width) {
+    void setColor(Graphics graphics, boolean isSingleMode, int width) {
         if (isSingleMode) {
             graphics.setColor(Color.RED);
             graphics.fillRect(100, 90, width - 200, 420);
@@ -21,17 +21,11 @@ public class BarChart {
         }
     }
 
-    void setBarChartHeader(Graphics graphics, boolean isSingleMode) {
+    void setHeader(Graphics graphics, boolean isSingleMode) {
         String[] barChartTitle;
         if (isSingleMode) {
             barChartTitle = new String[1];
             barChartTitle[0] = "Bar Chart";
-        } else {
-            barChartTitle = new String[2];
-            barChartTitle[0] = "Bar Chart";
-            barChartTitle[1] = "Small";
-        }
-        if (isSingleMode) {
             graphics.setColor(Color.CYAN);
             graphics.fillRect(112, 300, 75, 200);
             graphics.fillRect(187, 100, 75, 400);
@@ -42,6 +36,9 @@ public class BarChart {
             graphics.setFont(new Font("Arial Black", Font.BOLD, 55));
             graphics.drawString(barChartTitle[0], 130, 400);
         } else {
+            barChartTitle = new String[2];
+            barChartTitle[0] = "Bar Chart";
+            barChartTitle[1] = "Small";
             graphics.setColor(Color.CYAN);
             graphics.fillRect(100, 200, 40, 100);
             graphics.fillRect(140, 100, 40, 200);
@@ -55,8 +52,8 @@ public class BarChart {
         }
     }
 
-    void drawBarChart(Graphics graphics, boolean isSingleMode, int width) {
-        setBarChartColor(graphics, isSingleMode, width);
-        setBarChartHeader(graphics, isSingleMode);
+    void draw(Graphics graphics, boolean isSingleMode, int width) {
+        setColor(graphics, isSingleMode, width);
+        setHeader(graphics, isSingleMode);
     }
 }
