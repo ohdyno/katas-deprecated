@@ -54,4 +54,9 @@ public class BarChart {
             graphics.drawString(barChartTitle[1], 130, 270);
         }
     }
+
+    void drawBarChart(Graphics graphics, boolean isSingleMode, int width) {
+        setBarChartColor(graphics, isSingleMode, width);
+        setBarChartHeader(graphics, isSingleMode);
+    }
 }

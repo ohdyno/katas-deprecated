@@ -40,7 +40,7 @@ public class ChartDrawer extends JPanel {
 
     public void paint(Graphics graphics) {
         if (chartType == BAR_CHART) {
-            drawBarChart(graphics);
+            new BarChart().drawBarChart(graphics, chartMode.equals(SINGLE_MODE), getWidth());
             repaintChart();
         } else {
             drawPieChart(graphics);
@@ -50,11 +50,6 @@ public class ChartDrawer extends JPanel {
     private void drawPieChart(Graphics graphics) {
         setPieChartColor(graphics);
         setPieChartHeader(graphics);
-    }
-
-    private void drawBarChart(Graphics graphics) {
-        new BarChart().setBarChartColor(graphics, chartMode.equals(SINGLE_MODE), getWidth());
-        new BarChart().setBarChartHeader(graphics, chartMode.equals(SINGLE_MODE));
     }
 
     private void setPieChartHeader(Graphics graphics) {
