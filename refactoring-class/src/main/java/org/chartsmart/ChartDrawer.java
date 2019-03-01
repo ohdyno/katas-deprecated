@@ -20,22 +20,22 @@ public class ChartDrawer extends JPanel {
 
     private void setChartTitle() {
         if (chartType == BAR_CHART) {
-            chartTitle = setBarChartTitle();
+            chartTitle = setBarChartTitle(chartMode.equals(SINGLE_MODE));
         } else {
-            chartTitle = setPieChartTitle();
+            chartTitle = setPieChartTitle(chartMode.equals(SINGLE_MODE));
         }
     }
 
-    private String setPieChartTitle() {
-        if (chartMode.equals(SINGLE_MODE)) {
+    private String setPieChartTitle(boolean isSingleMode) {
+        if (isSingleMode) {
             return "Pie Chart - Single Mode";
         } else {
             return "Pie Chart - Compare Mode";
         }
     }
 
-    private String setBarChartTitle() {
-        if (chartMode.equals(SINGLE_MODE)) {
+    private String setBarChartTitle(boolean isSingleMode) {
+        if (isSingleMode) {
             return "Bar Chart - Single Mode";
         } else {
             return "Bar Chart - Compare Mode";
