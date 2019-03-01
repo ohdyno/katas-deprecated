@@ -41,6 +41,7 @@ public class ChartDrawer extends JPanel {
     public void paint(Graphics graphics) {
         if (chartType == BAR_CHART) {
             drawBarChart(graphics);
+            repaintChart();
         } else {
             drawPieChart(graphics);
         }
@@ -67,7 +68,7 @@ public class ChartDrawer extends JPanel {
             smallPieChartTitle[0] = "Pie Chart";
         }
         drawPieChartData(graphics, largePieChartTitle, smallPieChartTitle);
-        repaintPieChart(largePieChartTitle);
+        repaintChart();
     }
 
     private void setBarChartHeader(BarChart barChart, Graphics graphics, boolean isSingleMode) {
@@ -102,7 +103,6 @@ public class ChartDrawer extends JPanel {
             graphics.drawString(barChartTitle[0], 130, 250);
             graphics.drawString(barChartTitle[1], 130, 270);
         }
-        repaintChart();
     }
 
     private void repaintChart() {
@@ -110,14 +110,6 @@ public class ChartDrawer extends JPanel {
             repaint(200);
         } catch (Throwable e) {
             repaint();
-        }
-    }
-
-    private void repaintPieChart(List<String> largePieChartTitle) {
-        final boolean isMonthly = largePieChartTitle.contains("Monthly");
-        final boolean isDaily = getTitle().contains("daily");
-        if (isMonthly || isDaily) {
-            repaintChart();
         }
     }
 
