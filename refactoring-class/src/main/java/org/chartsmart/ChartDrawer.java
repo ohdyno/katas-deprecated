@@ -53,7 +53,7 @@ public class ChartDrawer extends JPanel {
     private void drawChart(Graphics graphics) {
         setChartColor(graphics);
         if (chartType == BAR_CHART) {
-            String[] barChartTitle = null;
+            String[] barChartTitle;
             if (chartMode.equals(SINGLE_MODE)) {
                 barChartTitle = new String[1];
                 barChartTitle[0] = "Bar Chart";
@@ -119,7 +119,17 @@ public class ChartDrawer extends JPanel {
     }
 
     private void drawBarChartData(Graphics graphics, String[] barChartData) {
-        if (chartMode.equals("shareddisplay")) {
+        if (chartMode.equals(SINGLE_MODE)) {
+            graphics.setColor(Color.CYAN);
+            graphics.fillRect(112, 300, 75, 200);
+            graphics.fillRect(187, 100, 75, 400);
+            graphics.fillRect(262, 200, 75, 300);
+            graphics.fillRect(337, 250, 75, 250);
+            graphics.fillRect(412, 160, 75, 340);
+            graphics.setColor(Color.BLACK);
+            graphics.setFont(new Font("Arial Black", Font.BOLD, 55));
+            graphics.drawString(barChartData[0], 130, 400);
+        } else {
             if (barChartData != null) {
                 graphics.setColor(Color.CYAN);
                 graphics.fillRect(100, 200, 40, 100);
@@ -132,16 +142,6 @@ public class ChartDrawer extends JPanel {
                 graphics.drawString(barChartData[0], 130, 250);
                 graphics.drawString(barChartData[1], 130, 270);
             }
-        } else {
-            graphics.setColor(Color.CYAN);
-            graphics.fillRect(112, 300, 75, 200);
-            graphics.fillRect(187, 100, 75, 400);
-            graphics.fillRect(262, 200, 75, 300);
-            graphics.fillRect(337, 250, 75, 250);
-            graphics.fillRect(412, 160, 75, 340);
-            graphics.setColor(Color.BLACK);
-            graphics.setFont(new Font("Arial Black", Font.BOLD, 55));
-            graphics.drawString(barChartData[0], 130, 400);
         }
     }
 
