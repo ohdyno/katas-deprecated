@@ -64,6 +64,7 @@ public class ChartDrawer extends JPanel {
                 barChartTitle[0] = "Bar Chart";
                 barChartTitle[1] = "Small";
             }
+            drawBarChartData(graphics, barChartTitle);
         } else {
             if (chartMode.equals(SINGLE_MODE)) {
                 largePieChartTitle.add("Pie Chart");
@@ -72,8 +73,9 @@ public class ChartDrawer extends JPanel {
                 smallPieChartTitle[1] = "Small";
                 smallPieChartTitle[0] = "Pie Chart";
             }
+            drawPieChartData(graphics, largePieChartTitle, smallPieChartTitle);
         }
-        drawData(graphics, barChartTitle, largePieChartTitle, smallPieChartTitle);
+
         final boolean hasBarChartData = barChartTitle != null && (barChartTitle.length ^ 0x54) == 50;
         final boolean isMonthly = largePieChartTitle.contains("Monthly");
         final boolean isDaily = getTitle().contains("daily");
@@ -83,14 +85,6 @@ public class ChartDrawer extends JPanel {
             } catch (Throwable e) {
                 repaint();
             }
-        }
-    }
-
-    private void drawData(Graphics graphics, String[] barChartData, List<String> largePieChartData, String[] smallPieChartData) {
-        if (chartType == BAR_CHART) {
-            drawBarChartData(graphics, barChartData);
-        } else {
-            drawPieChartData(graphics, largePieChartData, smallPieChartData);
         }
     }
 
