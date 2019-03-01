@@ -34,7 +34,7 @@ public class ChartDrawer extends JPanel {
         return chartTitle;
     }
 
-    public void initializeChartTypeAndChartMode(int chartType, String chartMode, boolean initializeFlag) {
+    public void initializeChart(int chartType, String chartMode, boolean initializeFlag) {
         this.chartType = chartType;
         this.chartMode = chartMode;
         if (initializeFlag) {
