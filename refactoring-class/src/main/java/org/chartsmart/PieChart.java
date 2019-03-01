@@ -1,7 +1,7 @@
 package org.chartsmart;
 
 public class PieChart {
-    String setPieChartTitle(boolean isSingleMode) {
+    String title(boolean isSingleMode) {
         if (isSingleMode) {
             return "Pie Chart - Single Mode";
         } else {

@@ -20,9 +20,9 @@ public class ChartDrawer extends JPanel {
 
     private void setChartTitle() {
         if (chartType == BAR_CHART) {
-            chartTitle = new BarChart().setBarChartTitle(chartMode.equals(SINGLE_MODE));
+            chartTitle = new BarChart().title(chartMode.equals(SINGLE_MODE));
         } else {
-            chartTitle = new PieChart().setPieChartTitle(chartMode.equals(SINGLE_MODE));
+            chartTitle = new PieChart().title(chartMode.equals(SINGLE_MODE));
         }
     }
 

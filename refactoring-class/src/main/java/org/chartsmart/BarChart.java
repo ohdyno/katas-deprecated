@@ -1,7 +1,7 @@
 package org.chartsmart;
 
 public class BarChart {
-    String setBarChartTitle(boolean isSingleMode) {
+    String title(boolean isSingleMode) {
         if (isSingleMode) {
             return "Bar Chart - Single Mode";
         } else {
