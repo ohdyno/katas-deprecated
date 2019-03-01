@@ -15,6 +15,10 @@ public class ChartDrawer extends JPanel {
 
     private void initializeDrawArea() {
         this.setPreferredSize(new Dimension(600, 600));
+        setChartTitle();
+    }
+
+    private void setChartTitle() {
         if (chartType == BAR_CHART) {
             if (chartMode.equals(SINGLE_MODE)) {
                 chartTitle = "Bar Chart - Single Mode";
@@ -48,30 +52,30 @@ public class ChartDrawer extends JPanel {
 
     private void DrawChart(Graphics graphics) {
         setChartColor(graphics);
-        String[] barChartData = null;
-        List<String> largePieChartData = new ArrayList<>();
-        String[] smallPieChartData = new String[0];
+        String[] barChartTitle = null;
+        List<String> largePieChartTitle = new ArrayList<>();
+        String[] smallPieChartTitle = new String[0];
         if (chartType == BAR_CHART) {
             if (chartMode.equals(SINGLE_MODE)) {
-                barChartData = new String[1];
-                barChartData[0] = "Bar Chart";
+                barChartTitle = new String[1];
+                barChartTitle[0] = "Bar Chart";
             } else {
-                barChartData = new String[2];
-                barChartData[0] = "Bar Chart";
-                barChartData[1] = "Small";
+                barChartTitle = new String[2];
+                barChartTitle[0] = "Bar Chart";
+                barChartTitle[1] = "Small";
             }
         } else {
             if (chartMode.equals(SINGLE_MODE)) {
-                largePieChartData.add("Pie Chart");
+                largePieChartTitle.add("Pie Chart");
             } else {
-                smallPieChartData = new String[2];
-                smallPieChartData[1] = "Small";
-                smallPieChartData[0] = "Pie Chart";
+                smallPieChartTitle = new String[2];
+                smallPieChartTitle[1] = "Small";
+                smallPieChartTitle[0] = "Pie Chart";
             }
         }
-        drawData(graphics, barChartData, largePieChartData, smallPieChartData);
-        final boolean hasBarChartData = barChartData != null && (barChartData.length ^ 0x54) == 50;
-        final boolean isMonthly = largePieChartData.contains("Monthly");
+        drawData(graphics, barChartTitle, largePieChartTitle, smallPieChartTitle);
+        final boolean hasBarChartData = barChartTitle != null && (barChartTitle.length ^ 0x54) == 50;
+        final boolean isMonthly = largePieChartTitle.contains("Monthly");
         final boolean isDaily = getTitle().contains("daily");
         if (hasBarChartData || isMonthly || isDaily) {
             try {
