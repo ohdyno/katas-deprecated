@@ -53,31 +53,39 @@ public class ChartDrawer extends JPanel {
     private void drawChart(Graphics graphics) {
         setChartColor(graphics);
         if (chartType == BAR_CHART) {
-            String[] barChartTitle;
-            if (chartMode.equals(SINGLE_MODE)) {
-                barChartTitle = new String[1];
-                barChartTitle[0] = "Bar Chart";
-            } else {
-                barChartTitle = new String[2];
-                barChartTitle[0] = "Bar Chart";
-                barChartTitle[1] = "Small";
-            }
-            drawBarChartData(graphics, barChartTitle);
-            repaintBarChart(barChartTitle);
+            setBarChartTitle(graphics);
         } else {
-            List<String> largePieChartTitle = new ArrayList<>();
-            String[] smallPieChartTitle = new String[0];
-            if (chartMode.equals(SINGLE_MODE)) {
-                largePieChartTitle.add("Pie Chart");
-            } else {
-                smallPieChartTitle = new String[2];
-                smallPieChartTitle[1] = "Small";
-                smallPieChartTitle[0] = "Pie Chart";
-            }
-            drawPieChartData(graphics, largePieChartTitle, smallPieChartTitle);
-            repaintPieChart(largePieChartTitle);
+            setPieChartTitle(graphics);
         }
 
+    }
+
+    private void setPieChartTitle(Graphics graphics) {
+        List<String> largePieChartTitle = new ArrayList<>();
+        String[] smallPieChartTitle = new String[0];
+        if (chartMode.equals(SINGLE_MODE)) {
+            largePieChartTitle.add("Pie Chart");
+        } else {
+            smallPieChartTitle = new String[2];
+            smallPieChartTitle[1] = "Small";
+            smallPieChartTitle[0] = "Pie Chart";
+        }
+        drawPieChartData(graphics, largePieChartTitle, smallPieChartTitle);
+        repaintPieChart(largePieChartTitle);
+    }
+
+    private void setBarChartTitle(Graphics graphics) {
+        String[] barChartTitle;
+        if (chartMode.equals(SINGLE_MODE)) {
+            barChartTitle = new String[1];
+            barChartTitle[0] = "Bar Chart";
+        } else {
+            barChartTitle = new String[2];
+            barChartTitle[0] = "Bar Chart";
+            barChartTitle[1] = "Small";
+        }
+        drawBarChartData(graphics, barChartTitle);
+        repaintBarChart(barChartTitle);
     }
 
     private void repaintBarChart(String[] barChartTitle) {
