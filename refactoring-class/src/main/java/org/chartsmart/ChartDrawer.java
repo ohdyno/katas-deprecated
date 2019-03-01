@@ -20,17 +20,25 @@ public class ChartDrawer extends JPanel {
 
     private void setChartTitle() {
         if (chartType == BAR_CHART) {
-            if (chartMode.equals(SINGLE_MODE)) {
-                chartTitle = "Bar Chart - Single Mode";
-            } else {
-                chartTitle = "Bar Chart - Compare Mode";
-            }
+            setBarChartTitle();
         } else {
-            if (chartMode.equals(SINGLE_MODE)) {
-                chartTitle = "Pie Chart - Single Mode";
-            } else {
-                chartTitle = "Pie Chart - Compare Mode";
-            }
+            setPieChartTitle();
+        }
+    }
+
+    private void setPieChartTitle() {
+        if (chartMode.equals(SINGLE_MODE)) {
+            chartTitle = "Pie Chart - Single Mode";
+        } else {
+            chartTitle = "Pie Chart - Compare Mode";
+        }
+    }
+
+    private void setBarChartTitle() {
+        if (chartMode.equals(SINGLE_MODE)) {
+            chartTitle = "Bar Chart - Single Mode";
+        } else {
+            chartTitle = "Bar Chart - Compare Mode";
         }
     }
 
@@ -53,14 +61,14 @@ public class ChartDrawer extends JPanel {
     private void drawChart(Graphics graphics) {
         setChartColor(graphics);
         if (chartType == BAR_CHART) {
-            setBarChartTitle(graphics);
+            setBarChartHeader(graphics);
         } else {
-            setPieChartTitle(graphics);
+            setPieChartHeader(graphics);
         }
 
     }
 
-    private void setPieChartTitle(Graphics graphics) {
+    private void setPieChartHeader(Graphics graphics) {
         List<String> largePieChartTitle = new ArrayList<>();
         String[] smallPieChartTitle = new String[0];
         if (chartMode.equals(SINGLE_MODE)) {
@@ -74,7 +82,7 @@ public class ChartDrawer extends JPanel {
         repaintPieChart(largePieChartTitle);
     }
 
-    private void setBarChartTitle(Graphics graphics) {
+    private void setBarChartHeader(Graphics graphics) {
         String[] barChartTitle;
         if (chartMode.equals(SINGLE_MODE)) {
             barChartTitle = new String[1];
@@ -155,21 +163,29 @@ public class ChartDrawer extends JPanel {
 
     private void setChartColor(Graphics graphics) {
         if (chartType == BAR_CHART) {
-            if (chartMode.equals(SINGLE_MODE)) {
-                graphics.setColor(Color.RED);
-                graphics.fillRect(100, 90, getWidth() - 200, 420);
-            } else {
-                graphics.setColor(Color.BLACK);
-                graphics.fillRect(95, 95, 210, 210);
-            }
+            setBarChartColor(graphics);
         } else {
-            if (chartMode.equals(SINGLE_MODE)) {
-                graphics.setColor(Color.BLUE);
-                graphics.fillOval(100, 100, 450, getHeight() - 150);
-            } else {
-                graphics.setColor(Color.BLUE);
-                graphics.fillOval(100, 100, 225, 225);
-            }
+            setPieChartColor(graphics);
+        }
+    }
+
+    private void setPieChartColor(Graphics graphics) {
+        if (chartMode.equals(SINGLE_MODE)) {
+            graphics.setColor(Color.BLUE);
+            graphics.fillOval(100, 100, 450, getHeight() - 150);
+        } else {
+            graphics.setColor(Color.BLUE);
+            graphics.fillOval(100, 100, 225, 225);
+        }
+    }
+
+    private void setBarChartColor(Graphics graphics) {
+        if (chartMode.equals(SINGLE_MODE)) {
+            graphics.setColor(Color.RED);
+            graphics.fillRect(100, 90, getWidth() - 200, 420);
+        } else {
+            graphics.setColor(Color.BLACK);
+            graphics.fillRect(95, 95, 210, 210);
         }
     }
 }
