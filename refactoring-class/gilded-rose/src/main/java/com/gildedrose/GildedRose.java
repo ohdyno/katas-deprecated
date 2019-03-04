@@ -20,6 +20,9 @@ class GildedRose {
                 handleBackstagePasses(item);
                 continue;
             }
+            if (item.name.equals(SULFURAS)) {
+                continue;
+            }
             foo(item);
         }
     }
