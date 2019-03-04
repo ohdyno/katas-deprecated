@@ -5,23 +5,23 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PieChart implements Chart {
-    private String chartMode;
+    private final boolean isSingleMode;
 
     public PieChart(String chartMode) {
 
-        this.chartMode = chartMode;
+        this.isSingleMode = chartMode.equals(SINGLE_MODE);
     }
 
     @Override
     public String title() {
-        if (chartMode.equals(SINGLE_MODE)) {
+        if (isSingleMode) {
             return "Pie Chart - Single Mode";
         } else {
             return "Pie Chart - Compare Mode";
         }
     }
 
-    private void setHeader(Graphics graphics, boolean isSingleMode) {
+    private void setHeader(Graphics graphics) {
         List<String> largePieChartTitle = new ArrayList<>();
         String[] smallPieChartTitle = new String[0];
         if (isSingleMode) {
@@ -41,7 +41,7 @@ public class PieChart implements Chart {
         }
     }
 
-    private void setColor(Graphics graphics, boolean isSingleMode, int height) {
+    private void setColor(Graphics graphics, int height) {
         if (isSingleMode) {
             graphics.setColor(Color.BLUE);
             graphics.fillOval(100, 100, 450, height - 150);
@@ -53,8 +53,7 @@ public class PieChart implements Chart {
 
     @Override
     public void draw(Graphics graphics, int width, int height) {
-        final boolean equals = chartMode.equals(SINGLE_MODE);
-        setColor(graphics, equals, height);
-        setHeader(graphics, equals);
+        setColor(graphics, height);
+        setHeader(graphics);
     }
 }

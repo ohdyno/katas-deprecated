@@ -62,8 +62,8 @@ public class BarChart implements Chart {
 
     @Override
     public void draw(Graphics graphics, int width, int height) {
-        final boolean equals = chartMode.equals(SINGLE_MODE);
-        setColor(graphics, equals, width);
-        setHeader(graphics, equals);
+        final boolean isSingleMode = chartMode.equals(SINGLE_MODE);
+        setColor(graphics, isSingleMode, width);
+        setHeader(graphics, isSingleMode);
     }
 }
