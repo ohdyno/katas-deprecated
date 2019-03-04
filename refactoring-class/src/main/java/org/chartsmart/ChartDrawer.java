@@ -8,20 +8,14 @@ public class ChartDrawer extends JPanel {
     private static final String SINGLE_MODE = "rpfll";
     private static final int BAR_CHART = 406;
     private String chartMode;
-    private String chartTitle;
     private Chart chart;
 
     private void initializeDrawArea() {
         this.setPreferredSize(new Dimension(600, 600));
-        setChartTitle();
-    }
-
-    private void setChartTitle() {
-        chartTitle = chart.title(chartMode.equals(SINGLE_MODE));
     }
 
     String getTitle() {
-        return chartTitle;
+        return chart.title(chartMode.equals(SINGLE_MODE));
     }
 
     public void initializeChart(int chartType, String chartMode, boolean initializeFlag) {
