@@ -39,11 +39,7 @@ public class ChartDrawer extends JPanel {
     }
 
     public void paint(Graphics graphics) {
-        if (chartType == BAR_CHART) {
-            new BarChart().draw(graphics, chartMode.equals(SINGLE_MODE), getWidth());
-        } else {
-            new PieChart().draw(graphics, chartMode.equals(SINGLE_MODE), getHeight());
-        }
+        chart.draw(graphics, chartMode.equals(SINGLE_MODE), getWidth(), getHeight());
         repaintChart();
     }
 

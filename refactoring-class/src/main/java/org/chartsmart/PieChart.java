@@ -45,7 +45,7 @@ public class PieChart implements Chart {
     }
 
     @Override
-    public void draw(Graphics graphics, boolean isSingleMode, int height) {
+    public void draw(Graphics graphics, boolean isSingleMode, int width, int height) {
         setColor(graphics, isSingleMode, height);
         setHeader(graphics, isSingleMode);
     }

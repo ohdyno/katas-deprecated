@@ -6,5 +6,5 @@ public interface Chart {
 
     String title(boolean isSingleMode);
 
-    void draw(Graphics graphics, boolean isSingleMode, int height);
+    void draw(Graphics graphics, boolean isSingleMode, int width, int height);
 }
