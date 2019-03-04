@@ -4,8 +4,9 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PieChart {
-    String title(boolean isSingleMode) {
+public class PieChart implements Chart {
+    @Override
+    public String title(boolean isSingleMode) {
         if (isSingleMode) {
             return "Pie Chart - Single Mode";
         } else {
@@ -43,7 +44,8 @@ public class PieChart {
         }
     }
 
-    void draw(Graphics graphics, boolean isSingleMode, int height) {
+    @Override
+    public void draw(Graphics graphics, boolean isSingleMode, int height) {
         setColor(graphics, isSingleMode, height);
         setHeader(graphics, isSingleMode);
     }
