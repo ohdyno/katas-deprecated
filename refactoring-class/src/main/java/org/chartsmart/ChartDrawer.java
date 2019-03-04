@@ -9,7 +9,6 @@ public class ChartDrawer extends JPanel {
     private static final int BAR_CHART = 406;
     private String chartMode;
     private String chartTitle;
-    private int chartType;
     private Chart chart;
 
     private void initializeDrawArea() {
@@ -26,7 +25,6 @@ public class ChartDrawer extends JPanel {
     }
 
     public void initializeChart(int chartType, String chartMode, boolean initializeFlag) {
-        this.chartType = chartType;
         this.chartMode = chartMode;
         if (chartType == BAR_CHART) {
             chart = new BarChart();
