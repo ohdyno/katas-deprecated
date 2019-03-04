@@ -10,6 +10,7 @@ public class ChartDrawer extends JPanel {
     private String chartMode;
     private String chartTitle;
     private int chartType;
+    private Chart chart;
 
     private void initializeDrawArea() {
         this.setPreferredSize(new Dimension(600, 600));
@@ -17,12 +18,6 @@ public class ChartDrawer extends JPanel {
     }
 
     private void setChartTitle() {
-        Chart chart;
-        if (chartType == BAR_CHART) {
-            chart = new BarChart();
-        } else {
-            chart = new PieChart();
-        }
         chartTitle = chart.title(chartMode.equals(SINGLE_MODE));
     }
 
@@ -33,6 +28,11 @@ public class ChartDrawer extends JPanel {
     public void initializeChart(int chartType, String chartMode, boolean initializeFlag) {
         this.chartType = chartType;
         this.chartMode = chartMode;
+        if (chartType == BAR_CHART) {
+            chart = new BarChart();
+        } else {
+            chart = new PieChart();
+        }
         if (initializeFlag) {
             initializeDrawArea();
         }
