@@ -11,8 +11,8 @@ public class BarChart implements Chart {
     }
 
     @Override
-    public String title(boolean isSingleMode) {
-        if (isSingleMode) {
+    public String title() {
+        if (chartMode.equals(SINGLE_MODE)) {
             return "Bar Chart - Single Mode";
         } else {
             return "Bar Chart - Compare Mode";

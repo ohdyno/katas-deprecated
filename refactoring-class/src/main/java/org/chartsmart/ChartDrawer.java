@@ -15,7 +15,7 @@ public class ChartDrawer extends JPanel {
     }
 
     String getTitle() {
-        return chart.title(chartMode.equals(SINGLE_MODE));
+        return chart.title();
     }
 
     public void initializeChart(int chartType, String chartMode, boolean initializeFlag) {
