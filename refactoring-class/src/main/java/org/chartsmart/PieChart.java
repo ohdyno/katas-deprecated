@@ -5,6 +5,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PieChart implements Chart {
+    private String chartMode;
+
+    public PieChart(String chartMode) {
+
+        this.chartMode = chartMode;
+    }
+
     @Override
     public String title(boolean isSingleMode) {
         if (isSingleMode) {

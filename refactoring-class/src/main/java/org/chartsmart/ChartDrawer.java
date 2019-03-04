@@ -21,9 +21,9 @@ public class ChartDrawer extends JPanel {
     public void initializeChart(int chartType, String chartMode, boolean initializeFlag) {
         this.chartMode = chartMode;
         if (chartType == BAR_CHART) {
-            chart = new BarChart();
+            chart = new BarChart(chartMode);
         } else {
-            chart = new PieChart();
+            chart = new PieChart(chartMode);
         }
         if (initializeFlag) {
             initializeDrawArea();

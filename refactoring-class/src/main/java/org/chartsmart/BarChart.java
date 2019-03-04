@@ -3,6 +3,13 @@ package org.chartsmart;
 import java.awt.*;
 
 public class BarChart implements Chart {
+    private String chartMode;
+
+    public BarChart(String chartMode) {
+
+        this.chartMode = chartMode;
+    }
+
     @Override
     public String title(boolean isSingleMode) {
         if (isSingleMode) {
