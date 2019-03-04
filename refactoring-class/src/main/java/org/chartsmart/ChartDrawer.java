@@ -17,11 +17,13 @@ public class ChartDrawer extends JPanel {
     }
 
     private void setChartTitle() {
+        Chart chart;
         if (chartType == BAR_CHART) {
-            chartTitle = new BarChart().title(chartMode.equals(SINGLE_MODE));
+            chart = new BarChart();
         } else {
-            chartTitle = new PieChart().title(chartMode.equals(SINGLE_MODE));
+            chart = new PieChart();
         }
+        chartTitle = chart.title(chartMode.equals(SINGLE_MODE));
     }
 
     String getTitle() {
