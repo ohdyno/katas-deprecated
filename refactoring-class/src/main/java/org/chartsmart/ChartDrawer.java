@@ -5,9 +5,7 @@ import java.awt.*;
 
 public class ChartDrawer extends JPanel {
 
-    private static final String SINGLE_MODE = "rpfll";
     private static final int BAR_CHART = 406;
-    private String chartMode;
     private Chart chart;
 
     private void initializeDrawArea() {
@@ -19,7 +17,6 @@ public class ChartDrawer extends JPanel {
     }
 
     public void initializeChart(int chartType, String chartMode, boolean initializeFlag) {
-        this.chartMode = chartMode;
         if (chartType == BAR_CHART) {
             chart = new BarChart(chartMode);
         } else {
@@ -31,7 +28,7 @@ public class ChartDrawer extends JPanel {
     }
 
     public void paint(Graphics graphics) {
-        chart.draw(graphics, chartMode.equals(SINGLE_MODE), getWidth(), getHeight());
+        chart.draw(graphics, getWidth(), getHeight());
         repaintChart();
     }
 

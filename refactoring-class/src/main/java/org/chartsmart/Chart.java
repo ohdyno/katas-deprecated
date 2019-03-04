@@ -8,5 +8,5 @@ public interface Chart {
 
     String title();
 
-    void draw(Graphics graphics, boolean isSingleMode, int width, int height);
+    void draw(Graphics graphics, int width, int height);
 }
