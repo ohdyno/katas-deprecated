@@ -3,23 +3,22 @@ package org.chartsmart;
 import java.awt.*;
 
 public class BarChart implements Chart {
-    private String chartMode;
+    private final boolean isSingleMode;
 
     public BarChart(String chartMode) {
-
-        this.chartMode = chartMode;
+        this.isSingleMode = chartMode.equals(SINGLE_MODE);
     }
 
     @Override
     public String title() {
-        if (chartMode.equals(SINGLE_MODE)) {
+        if (isSingleMode) {
             return "Bar Chart - Single Mode";
         } else {
             return "Bar Chart - Compare Mode";
         }
     }
 
-    private void setColor(Graphics graphics, boolean isSingleMode, int width) {
+    private void setColor(Graphics graphics, int width) {
         if (isSingleMode) {
             graphics.setColor(Color.RED);
             graphics.fillRect(100, 90, width - 200, 420);
@@ -29,7 +28,7 @@ public class BarChart implements Chart {
         }
     }
 
-    private void setHeader(Graphics graphics, boolean isSingleMode) {
+    private void setHeader(Graphics graphics) {
         String[] barChartTitle;
         if (isSingleMode) {
             barChartTitle = new String[1];
@@ -62,8 +61,7 @@ public class BarChart implements Chart {
 
     @Override
     public void draw(Graphics graphics, int width, int height) {
-        final boolean isSingleMode = chartMode.equals(SINGLE_MODE);
-        setColor(graphics, isSingleMode, width);
-        setHeader(graphics, isSingleMode);
+        setColor(graphics, width);
+        setHeader(graphics);
     }
 }
