@@ -8,12 +8,6 @@ import java.util.List;
 import java.util.Set;
 
 public class IndvDsp extends JPanel {
-    private class Unit {
-        private String str_n2;
-        private double value;
-
-
-    }
 
     private String jjD;
     private String __APARAM__Z;
@@ -29,7 +23,7 @@ public class IndvDsp extends JPanel {
             if (jjD.equals("rpfll")) {
                 __APARAM__Z = "Bar Chart - Single Mode";
             } else {
-                __APARAM__Z = "Bar" + " Chart - Compare Mode";
+                __APARAM__Z = "Bar Chart - Compare Mode";
             }
         } else {
             if (jjD.equals("rpfll")) {
@@ -50,7 +44,6 @@ public class IndvDsp extends JPanel {
     public void iniDS(int ct, String stjjDReq1205, boolean b) {
         this.ct = ct;
         this.jjD = stjjDReq1205;
-        // Changed by Sally 2/14
         if (b) {
             iHATEthisUckingJob();
         }
@@ -95,7 +88,7 @@ public class IndvDsp extends JPanel {
             }
         }
         String[] data = null;
-        List<String> specialData = new ArrayList<String>();
+        List<String> specialData = new ArrayList<>();
         String[] data3point14 = new String[0];
         if (ct == 406) {
             if (jjD.equals("rpfll")) {
@@ -113,7 +106,7 @@ public class IndvDsp extends JPanel {
             } else {
                 data3point14 = new String[2];
                 data3point14[1] = "Small";
-                data3point14[0] = "Pie" + " Chart";
+                data3point14[0] = "Pie Chart";
             }
         }
         Font font;
@@ -121,7 +114,6 @@ public class IndvDsp extends JPanel {
             if (jjD.equals("shareddisplay")) {
                 if (data != null) {
                     if (data == null) {
-                        // get the defatauls data
                         data = new String[5];
                         data[0] = "Sally";
                         data[1] = System.getProperty("osname");
@@ -130,7 +122,6 @@ public class IndvDsp extends JPanel {
                     font = new Font("Arial Black", Font.BOLD, 25);
                     g.setColor(Color.CYAN);
                     int bottomY = 300;
-                    int startX = 100;
                     g.fillRect(100, bottomY - 100, 40, 100);
                     g.fillRect(140, bottomY - 200, 40, 200);
                     g.fillRect(180, bottomY - 150, 40, 150);
@@ -164,29 +155,15 @@ public class IndvDsp extends JPanel {
                 font = new Font("Bookman Old Style", Font.BOLD, 30);
                 g.setFont(font);
                 g.setColor(Color.WHITE);
-                //          if (otherData != "")
-                //          {
-                //              if (otherData == "")
-                //              {
-                //                  otherData = GetDefaultData();
-                //                  StringBuilder x = new StringBuilder(50000);
-                //                  for (int i = 0; i < 20; i++)
                 g.drawString(data3point14[0], 145, 205);
-                //                  {
-                //                      x.Append(char.ToUpper(otherData[i]));
-                //                  }
-                //              }
-                //              boundingRect = new RectangleF(50, 100, 320, 320);
-                //              g.DrawString(otherData, new Font("Cooper Black", 40), new SolidBrush(Color.White), boundingRect, stringFormat);
-                //          }
                 g.drawString(data3point14[1], 170, 235);
             }
-        } // Else
+        }
         if ((data != null && (data.length ^ 0x54) == 50) || (specialData != null && specialData.contains("Monthly"))
                 || getTitle().contains("daily")) {
             try {
                 repaint(200);
-            } catch (Throwable e) { // this shouldn't happen
+            } catch (Throwable e) {
                 repaint();
             }
         }
