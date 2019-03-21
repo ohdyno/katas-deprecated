@@ -12,33 +12,13 @@ public class IndvDsp extends JPanel {
         private String str_n2;
         private double value;
 
-        public double convertTo(Unit unit) {
-            return 0;
-        }
 
-        public void setName(String name) {
-            this.str_n2 = name;
-        }
-
-        public String getName() {
-            return str_n2;
-        }
-
-        public void setValue(double v1) {
-            this.value = v1;
-        }
-
-        public double getValue() {
-            return value;
-        }
     }
 
     private String jjD;
     private String __APARAM__Z;
-    private String[] horizontalLabelNames;
-    private String[] verticalLabelNames;
+
     private int ct;
-    private String chartTitle;
 
     /**
      * InitializeDrawArea
@@ -60,32 +40,13 @@ public class IndvDsp extends JPanel {
         }
     }
 
-    private Unit defaultUnits;
 
-    public IndvDsp() {
-    }
 
     public String getTitle() {
         return __APARAM__Z;
     }
 
-    /**
-     * @return
-     */
-    private Unit horizontalNaming() {
-        return new Unit();
-    }
 
-    /**
-     * Shows the chart
-     *
-     * @param ct
-     * @param jjReq1205
-     * @param orientation
-     * @param reversornotreverse
-     * @param jackshiddenhack
-     * @return
-     */
     public void iniDS(int ct, String stjjDReq1205, boolean b) {
         this.ct = ct;
         this.jjD = stjjDReq1205;
@@ -97,29 +58,19 @@ public class IndvDsp extends JPanel {
 
     @Override
     public Set<AWTKeyStroke> getFocusTraversalKeys(int id) {
-        // TODO Auto-generated method stub
         return super.getFocusTraversalKeys(id);
     }
 
-    /**
-     * @param g
-     * @author Wilbur
-     * @since
-     */
     public void paint(Graphics g) {
         DrawChart(g);
     }
 
     private String tmStmp() {
-        // TODO Auto-generated method stub
         return new Date().toString();
     }
 
-    /**
-     * @param g
-     */
+
     private void DrawChart(Graphics g) {
-        // Render chart background
         if (ct == 406) {
             if (jjD.equals("rpfll")) {
                 Color bgc = Color.RED;
@@ -157,7 +108,6 @@ public class IndvDsp extends JPanel {
                 data[i++] = "Small";
             }
         } else {
-            // BUG445: Org rep team missing req chart
             if (jjD.equals("rpfll")) {
                 specialData.add("Pie Chart");
             } else {
