@@ -13,23 +13,19 @@ public class Game {
 
     public int score() {
 
-        int frameIndex = 0;
-
-        for (int rollIndex = 0; rollIndex < rolls.length; ) {
-
-            if (frameIndex >= 10) {
-                break;
-            }
+        for (int rollIndex = 0, frameIndex = 0; frameIndex < 10; frameIndex++) {
 
             if (rolls[rollIndex] == 10) {
                 individualFrameScore[frameIndex] = 10 + rolls[rollIndex + 1] + rolls[rollIndex + 2];
                 rollIndex++;
+            } else if (rolls[rollIndex] + rolls[rollIndex + 1] == 10) {
+                individualFrameScore[frameIndex] = 10 + rolls[rollIndex + 2];
+                rollIndex += 2;
             } else {
                 individualFrameScore[frameIndex] = rolls[rollIndex] + rolls[rollIndex + 1];
                 rollIndex += 2;
             }
 
-            frameIndex++;
         }
 
         return Arrays.stream(individualFrameScore).sum();

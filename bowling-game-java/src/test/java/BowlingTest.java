@@ -60,4 +60,45 @@ public class BowlingTest {
         }
         assertEquals(300, game.score());
     }
+
+    @Test
+    public void spareWithFourPinsScoreIs18() {
+        game.roll(1);
+        game.roll(9);
+        game.roll(4);
+
+        for (int i = 0; i < 18; i++) {
+            game.roll(0);
+        }
+
+        assertEquals(18, game.score());
+    }
+
+    @Test
+    public void oneStrikeOneSpareAllGutters() {
+
+        game.roll(6);
+        game.roll(4);
+        game.roll(10);
+
+        for (int i = 0; i < 18; i++) {
+            game.roll(0);
+        }
+
+        assertEquals(30, game.score());
+
+    }
+
+    @Test
+    public void tenSpares() {
+        for (int i = 0; i < 10; i++) {
+            game.roll(9);
+            game.roll(1);
+        }
+        game.roll(9);
+
+
+        assertEquals(190, game.score());
+
+    }
 }
