@@ -1,10 +1,7 @@
-import java.util.Arrays;
-
 public class Game {
 
-    int[] rolls = new int[21];
-    int index = 0;
-    int individualFrameScore[] = new int[10];
+    private int[] rolls = new int[21];
+    private int index = 0;
 
     public void roll(int pinsKnockedDown) {
         rolls[index] = pinsKnockedDown;
@@ -12,23 +9,44 @@ public class Game {
     }
 
     public int score() {
+        int totalScore = 0;
 
         for (int rollIndex = 0, frameIndex = 0; frameIndex < 10; frameIndex++) {
 
-            if (rolls[rollIndex] == 10) {
-                individualFrameScore[frameIndex] = 10 + rolls[rollIndex + 1] + rolls[rollIndex + 2];
+            if (isAStrike(rollIndex)) {
+                totalScore += 10 + strikeBonus(rollIndex);
                 rollIndex++;
-            } else if (rolls[rollIndex] + rolls[rollIndex + 1] == 10) {
-                individualFrameScore[frameIndex] = 10 + rolls[rollIndex + 2];
+            } else if (isASpare(rollIndex)) {
+                totalScore += 10 + spareBonus(rollIndex);
                 rollIndex += 2;
             } else {
-                individualFrameScore[frameIndex] = rolls[rollIndex] + rolls[rollIndex + 1];
+                totalScore += frameScore(rollIndex);
                 rollIndex += 2;
             }
 
         }
 
-        return Arrays.stream(individualFrameScore).sum();
+        return totalScore;
+    }
+
+    private int frameScore(int rollIndex) {
+        return rolls[rollIndex] + rolls[rollIndex + 1];
+    }
+
+    private int spareBonus(int rollIndex) {
+        return rolls[rollIndex + 2];
+    }
+
+    private int strikeBonus(int rollIndex) {
+        return rolls[rollIndex + 1] + rolls[rollIndex + 2];
+    }
+
+    private boolean isASpare(int rollIndex) {
+        return frameScore(rollIndex) == 10;
+    }
+
+    private boolean isAStrike(int rollIndex) {
+        return rolls[rollIndex] == 10;
     }
 
 
