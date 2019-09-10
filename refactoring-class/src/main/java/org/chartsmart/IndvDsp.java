@@ -12,18 +12,6 @@ public class IndvDsp extends JPanel {
         private String str_n2;
         private double value;
 
-        public double convertTo(Unit unit) {
-            return 0;
-        }
-
-        public void setName(String name) {
-            this.str_n2 = name;
-        }
-
-        public String getName() {
-            return str_n2;
-        }
-
         public void setValue(double v1) {
             this.value = v1;
         }
@@ -35,10 +23,8 @@ public class IndvDsp extends JPanel {
 
     private String jjD;
     private String __APARAM__Z;
-    private String[] horizontalLabelNames;
-    private String[] verticalLabelNames;
     private int ct;
-    private String chartTitle;
+
 
     /**
      * InitializeDrawArea
