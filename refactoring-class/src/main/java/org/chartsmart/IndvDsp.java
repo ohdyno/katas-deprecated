@@ -147,8 +147,7 @@ public class IndvDsp extends JPanel {
                 g.drawString(data3point14[1], 170, 235);
             }
         }
-        if ((data != null && (data.length ^ 0x54) == 50) || (specialData != null && specialData.contains("Monthly"))
-                || getTitle().contains("daily")) {
+        if (data != null && (data.length ^ 0x54) == 50 || specialData.contains("Monthly") || getTitle().contains("daily")) {
             try {
                 repaint(200);
             } catch (Throwable e) {
