@@ -32,7 +32,7 @@ public class IndvDsp extends JPanel {
     }
 
 
-    public String getTitle() {
+    String getTitle() {
         return __APARAM__Z;
     }
 
@@ -77,7 +77,7 @@ public class IndvDsp extends JPanel {
             }
         }
         String[] data = null;
-        List<String> specialData = new ArrayList<String>();
+        List<String> specialData = new ArrayList<>();
         String[] data3point14 = new String[0];
         if (ct == 406) {
             if (jjD.equals("rpfll")) {
@@ -90,7 +90,6 @@ public class IndvDsp extends JPanel {
                 data[i++] = "Small";
             }
         } else {
-            // BUG445: Org rep team missing req chart
             if (jjD.equals("rpfll")) {
                 specialData.add("Pie Chart");
             } else {
