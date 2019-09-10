@@ -3,9 +3,7 @@ package org.chartsmart;
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
-import java.util.Set;
 
 public class IndvDsp extends JPanel {
     private class Unit {
@@ -38,18 +36,12 @@ public class IndvDsp extends JPanel {
     }
 
 
-    public IndvDsp() {
-    }
-
     public String getTitle() {
         return __APARAM__Z;
     }
 
     /**
      * Shows the chart
-     *
-     * @param ct
-     * @return
      */
     public void iniDS(int ct, String stjjDReq1205, boolean b) {
         this.ct = ct;
@@ -59,29 +51,10 @@ public class IndvDsp extends JPanel {
         }
     }
 
-    @Override
-    public Set<AWTKeyStroke> getFocusTraversalKeys(int id) {
-        // TODO Auto-generated method stub
-        return super.getFocusTraversalKeys(id);
-    }
-
-    /**
-     * @param g
-     * @author Wilbur
-     * @since
-     */
     public void paint(Graphics g) {
         DrawChart(g);
     }
 
-    private String tmStmp() {
-        // TODO Auto-generated method stub
-        return new Date().toString();
-    }
-
-    /**
-     * @param g
-     */
     private void DrawChart(Graphics g) {
         // Render chart background
         if (ct == 406) {
@@ -134,13 +107,6 @@ public class IndvDsp extends JPanel {
         if (ct == 406) {
             if (jjD.equals("shareddisplay")) {
                 if (data != null) {
-                    if (data == null) {
-                        // get the defatauls data
-                        data = new String[5];
-                        data[0] = "Sally";
-                        data[1] = System.getProperty("osname");
-                        data[2] = tmStmp();
-                    }
                     font = new Font("Arial Black", Font.BOLD, 25);
                     g.setColor(Color.CYAN);
                     int bottomY = 300;
