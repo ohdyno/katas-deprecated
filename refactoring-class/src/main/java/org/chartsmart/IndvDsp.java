@@ -6,14 +6,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class IndvDsp extends JPanel {
-    private class Unit {
-
-    }
 
     private String jjD;
     private String __APARAM__Z;
     private int ct;
-
 
     /**
      * InitializeDrawArea
