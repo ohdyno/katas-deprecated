@@ -9,16 +9,7 @@ import java.util.Set;
 
 public class IndvDsp extends JPanel {
     private class Unit {
-        private String str_n2;
-        private double value;
 
-        public void setValue(double v1) {
-            this.value = v1;
-        }
-
-        public double getValue() {
-            return value;
-        }
     }
 
     private String jjD;
@@ -46,7 +37,6 @@ public class IndvDsp extends JPanel {
         }
     }
 
-    private Unit defaultUnits;
 
     public IndvDsp() {
     }
@@ -56,26 +46,14 @@ public class IndvDsp extends JPanel {
     }
 
     /**
-     * @return
-     */
-    private Unit horizontalNaming() {
-        return new Unit();
-    }
-
-    /**
      * Shows the chart
      *
      * @param ct
-     * @param jjReq1205
-     * @param orientation
-     * @param reversornotreverse
-     * @param jackshiddenhack
      * @return
      */
     public void iniDS(int ct, String stjjDReq1205, boolean b) {
         this.ct = ct;
         this.jjD = stjjDReq1205;
-        // Changed by Sally 2/14
         if (b) {
             iHATEthisUckingJob();
         }
