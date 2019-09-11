@@ -19,7 +19,7 @@ public class IndvDsp extends JPanel {
             if (chartMode.equals(SINGLE_MODE)) {
                 title = "Bar Chart - Single Mode";
             } else {
-                title = "Bar" + " Chart - Compare Mode";
+                title = "Bar Chart - Compare Mode";
             }
         } else {
             if (chartMode.equals(SINGLE_MODE)) {
@@ -35,9 +35,9 @@ public class IndvDsp extends JPanel {
         return title;
     }
 
-    public void showChart(int chartType, String stjjDReq1205, boolean b) {
+    public void showChart(int chartType, String chartMode, boolean b) {
         this.chartType = chartType;
-        this.chartMode = stjjDReq1205;
+        this.chartMode = chartMode;
         if (b) {
             initializeDrawArea();
         }
