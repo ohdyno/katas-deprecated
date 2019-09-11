@@ -66,15 +66,12 @@ public class IndvDsp extends JPanel {
                 g.fillOval(100, 100, 450, getHeight() - 150);
             } else {
                 g.setColor(Color.BLUE);
-                double trueLength = 405;
-                float padding = 90;
-                int dimension = (int) (trueLength - padding * 2);
-                g.fillOval(100, 100, dimension, dimension);
+                g.fillOval(100, 100, 225, 225);
             }
         }
         String[] data = null;
         List<String> specialData = new ArrayList<>();
-        String[] data3point14 = new String[0];
+        String[] pieTitle = new String[0];
         if (chartType == BAR_CHART) {
             if (chartMode.equals(SINGLE_MODE)) {
                 data = new String[1];
@@ -89,9 +86,9 @@ public class IndvDsp extends JPanel {
             if (chartMode.equals(SINGLE_MODE)) {
                 specialData.add("Pie Chart");
             } else {
-                data3point14 = new String[2];
-                data3point14[1] = "Small";
-                data3point14[0] = "Pie" + " Chart";
+                pieTitle = new String[2];
+                pieTitle[1] = "Small";
+                pieTitle[0] = "Pie" + " Chart";
             }
         }
         Font font;
@@ -134,8 +131,8 @@ public class IndvDsp extends JPanel {
                 font = new Font("Bookman Old Style", Font.BOLD, 30);
                 g.setFont(font);
                 g.setColor(Color.WHITE);
-                g.drawString(data3point14[0], 145, 205);
-                g.drawString(data3point14[1], 170, 235);
+                g.drawString(pieTitle[0], 145, 205);
+                g.drawString(pieTitle[1], 170, 235);
             }
         }
     }
