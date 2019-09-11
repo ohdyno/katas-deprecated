@@ -7,6 +7,7 @@ import java.util.List;
 
 public class IndvDsp extends JPanel {
 
+    public static final String SHAREDDISPLAY = "shareddisplay";
     private final int BAR_CHART = 406;
     private final String SINGLE_MODE = "rpfll";
     private String chartMode;
@@ -51,8 +52,7 @@ public class IndvDsp extends JPanel {
         // Render chart background
         if (chartType == BAR_CHART) {
             if (chartMode.equals(SINGLE_MODE)) {
-                Color bgc = Color.RED;
-                g.setColor(bgc);
+                g.setColor(Color.RED);
                 g.fillRect(100, 90, getWidth() - 200, 420);
             } else {
                 g.setColor(Color.BLACK);
@@ -60,9 +60,7 @@ public class IndvDsp extends JPanel {
             }
         } else {
             if (chartMode.equals(SINGLE_MODE)) {
-                Color color;
-                color = Color.BLUE;
-                g.setColor(color);
+                g.setColor(Color.BLUE);
                 g.fillOval(100, 100, 450, getHeight() - 150);
             } else {
                 g.setColor(Color.BLUE);
@@ -88,12 +86,12 @@ public class IndvDsp extends JPanel {
             } else {
                 pieTitle = new String[2];
                 pieTitle[1] = "Small";
-                pieTitle[0] = "Pie" + " Chart";
+                pieTitle[0] = "Pie Chart";
             }
         }
         Font font;
         if (chartType == BAR_CHART) {
-            if (chartMode.equals("shareddisplay")) {
+            if (chartMode.equals(SHAREDDISPLAY)) {
                 if (data != null) {
                     font = new Font("Arial Black", Font.BOLD, 25);
                     g.setColor(Color.CYAN);
