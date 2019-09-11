@@ -7,40 +7,41 @@ import java.util.List;
 
 public class IndvDsp extends JPanel {
 
+    private final int BAR_CHART = 406;
     private String jjD;
-    private String __APARAM__Z;
-    private int ct;
+    private String title;
+    private int chartType;
 
     /**
      * InitializeDrawArea
      */
     private void initializeDrawArea() {
         this.setPreferredSize(new Dimension(600, 600));
-        if (ct == 406) {
+        if (chartType == BAR_CHART) {
             if (jjD.equals("rpfll")) {
-                __APARAM__Z = "Bar Chart - Single Mode";
+                title = "Bar Chart - Single Mode";
             } else {
-                __APARAM__Z = "Bar" + " Chart - Compare Mode";
+                title = "Bar" + " Chart - Compare Mode";
             }
         } else {
             if (jjD.equals("rpfll")) {
-                __APARAM__Z = "Pie Chart - Single Mode";
+                title = "Pie Chart - Single Mode";
             } else {
-                __APARAM__Z = "Pie Chart - Compare Mode";
+                title = "Pie Chart - Compare Mode";
             }
         }
     }
 
 
     String getTitle() {
-        return __APARAM__Z;
+        return title;
     }
 
     /**
      * Shows the chart
      */
-    public void showChart(int ct, String stjjDReq1205, boolean b) {
-        this.ct = ct;
+    public void showChart(int chartType, String stjjDReq1205, boolean b) {
+        this.chartType = chartType;
         this.jjD = stjjDReq1205;
         if (b) {
             initializeDrawArea();
@@ -53,7 +54,7 @@ public class IndvDsp extends JPanel {
 
     private void DrawChart(Graphics g) {
         // Render chart background
-        if (ct == 406) {
+        if (chartType == BAR_CHART) {
             if (jjD.equals("rpfll")) {
                 Color bgc = Color.RED;
                 g.setColor(bgc);
@@ -79,7 +80,7 @@ public class IndvDsp extends JPanel {
         String[] data = null;
         List<String> specialData = new ArrayList<>();
         String[] data3point14 = new String[0];
-        if (ct == 406) {
+        if (chartType == BAR_CHART) {
             if (jjD.equals("rpfll")) {
                 data = new String[1];
                 data[0] = "Bar Chart";
@@ -99,7 +100,7 @@ public class IndvDsp extends JPanel {
             }
         }
         Font font;
-        if (ct == 406) {
+        if (chartType == BAR_CHART) {
             if (jjD.equals("shareddisplay")) {
                 if (data != null) {
                     font = new Font("Arial Black", Font.BOLD, 25);
