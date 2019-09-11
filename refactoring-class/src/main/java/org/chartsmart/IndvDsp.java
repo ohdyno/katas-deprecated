@@ -67,22 +67,22 @@ public class IndvDsp extends JPanel {
                 g.fillOval(100, 100, 225, 225);
             }
         }
-        String[] data = null;
-        List<String> specialData = new ArrayList<>();
+        String[] barTitle = null;
+        List<String> pieTitle2 = new ArrayList<>();
         String[] pieTitle = new String[0];
         if (chartType == BAR_CHART) {
             if (chartMode.equals(SINGLE_MODE)) {
-                data = new String[1];
-                data[0] = "Bar Chart";
+                barTitle = new String[1];
+                barTitle[0] = "Bar Chart";
             } else {
-                data = new String[2];
+                barTitle = new String[2];
                 int i = 0;
-                data[i++] = "Bar Chart";
-                data[i++] = "Small";
+                barTitle[i++] = "Bar Chart";
+                barTitle[i++] = "Small";
             }
         } else {
             if (chartMode.equals(SINGLE_MODE)) {
-                specialData.add("Pie Chart");
+                pieTitle2.add("Pie Chart");
             } else {
                 pieTitle = new String[2];
                 pieTitle[1] = "Small";
@@ -92,7 +92,7 @@ public class IndvDsp extends JPanel {
         Font font;
         if (chartType == BAR_CHART) {
             if (chartMode.equals(SHAREDDISPLAY)) {
-                if (data != null) {
+                if (barTitle != null) {
                     font = new Font("Arial Black", Font.BOLD, 25);
                     g.setColor(Color.CYAN);
                     int bottomY = 300;
@@ -103,8 +103,8 @@ public class IndvDsp extends JPanel {
                     g.fillRect(260, bottomY - 170, 40, 170);
                     g.setColor(Color.RED);
                     g.setFont(font);
-                    g.drawString(data[0], 130, 250);
-                    g.drawString(data[1], 130, 270);
+                    g.drawString(barTitle[0], 130, 250);
+                    g.drawString(barTitle[1], 130, 270);
                 }
             } else {
                 int bottomY = 500;
@@ -117,14 +117,14 @@ public class IndvDsp extends JPanel {
                 font = new Font("Arial Black", Font.BOLD, 55);
                 g.setColor(Color.BLACK);
                 g.setFont(font);
-                g.drawString(data[0], 130, 400);
+                g.drawString(barTitle[0], 130, 400);
             }
         } else {
             if (chartMode.equals(SINGLE_MODE)) {
                 font = new Font("Bookman Old Style", Font.BOLD, 55);
                 g.setColor(Color.WHITE);
                 g.setFont(font);
-                g.drawString(specialData.get(0), 200, 340);
+                g.drawString(pieTitle2.get(0), 200, 340);
             } else {
                 font = new Font("Bookman Old Style", Font.BOLD, 30);
                 g.setFont(font);
