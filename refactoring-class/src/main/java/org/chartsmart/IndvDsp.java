@@ -14,7 +14,7 @@ public class IndvDsp extends JPanel {
     /**
      * InitializeDrawArea
      */
-    private void iHATEthisUckingJob() {
+    private void initializeDrawArea() {
         this.setPreferredSize(new Dimension(600, 600));
         if (ct == 406) {
             if (jjD.equals("rpfll")) {
@@ -39,11 +39,11 @@ public class IndvDsp extends JPanel {
     /**
      * Shows the chart
      */
-    public void iniDS(int ct, String stjjDReq1205, boolean b) {
+    public void showChart(int ct, String stjjDReq1205, boolean b) {
         this.ct = ct;
         this.jjD = stjjDReq1205;
         if (b) {
-            iHATEthisUckingJob();
+            initializeDrawArea();
         }
     }
 
