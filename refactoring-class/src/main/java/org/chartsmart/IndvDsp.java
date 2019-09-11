@@ -35,10 +35,10 @@ public class IndvDsp extends JPanel {
         return title;
     }
 
-    public void showChart(int chartType, String chartMode, boolean b) {
+    public void showChart(int chartType, String chartMode, boolean shouldDraw) {
         this.chartType = chartType;
         this.chartMode = chartMode;
-        if (b) {
+        if (shouldDraw) {
             initializeDrawArea();
         }
     }
@@ -60,16 +60,16 @@ public class IndvDsp extends JPanel {
             }
         } else {
             if (chartMode.equals(SINGLE_MODE)) {
-                Color bgcb;
-                bgcb = Color.BLUE;
-                g.setColor(bgcb);
+                Color color;
+                color = Color.BLUE;
+                g.setColor(color);
                 g.fillOval(100, 100, 450, getHeight() - 150);
             } else {
                 g.setColor(Color.BLUE);
-                double isq = 405;
+                double trueLength = 405;
                 float padding = 90;
-                int sc = (int) (isq - padding * 2);
-                g.fillOval(100, 100, sc, sc);
+                int dimension = (int) (trueLength - padding * 2);
+                g.fillOval(100, 100, dimension, dimension);
             }
         }
         String[] data = null;
