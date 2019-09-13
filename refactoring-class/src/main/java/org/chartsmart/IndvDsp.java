@@ -76,9 +76,8 @@ public class IndvDsp extends JPanel {
                 barTitle[0] = "Bar Chart";
             } else {
                 barTitle = new String[2];
-                int i = 0;
-                barTitle[i++] = "Bar Chart";
-                barTitle[i++] = "Small";
+                barTitle[0] = "Bar Chart";
+                barTitle[1] = "Small";
             }
         } else {
             if (chartMode.equals(SINGLE_MODE)) {
