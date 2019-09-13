@@ -8,8 +8,8 @@ import java.util.List;
 public class ChartPanel extends JPanel {
 
     private static final String SHARED_DISPLAY = "shareddisplay";
-    private final int BAR_CHART = 406;
-    private final String SINGLE_MODE = "rpfll";
+    private static final int BAR_CHART = 406;
+    private static final String SINGLE_MODE = "rpfll";
     private String chartMode;
     private String title;
     private int chartType;
@@ -30,7 +30,6 @@ public class ChartPanel extends JPanel {
             }
         }
     }
-
 
     String getTitle() {
         return title;
