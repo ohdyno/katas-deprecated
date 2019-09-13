@@ -3,7 +3,7 @@ package org.chartsmart.tests;
 import org.approvaltests.Approvals;
 import org.approvaltests.reporters.DelayedClipboardReporter;
 import org.approvaltests.reporters.UseReporter;
-import org.chartsmart.IndvDsp;
+import org.chartsmart.ChartPanel;
 import org.chartsmart.MainWindow;
 import org.junit.Test;
 
@@ -17,28 +17,28 @@ public class ChartSmartTest {
 
     @Test
     public void testBarChart() {
-        IndvDsp cw = new IndvDsp();
+        ChartPanel cw = new ChartPanel();
         cw.showChart(406, "rpfll", true);
         Approvals.verify(cw);
     }
 
     @Test
     public void testBarChartCompare() {
-        IndvDsp cw = new IndvDsp();
+        ChartPanel cw = new ChartPanel();
         cw.showChart(406, "shareddisplay", true);
         Approvals.verify(cw);
     }
 
     @Test
     public void testPieChart() {
-        IndvDsp cw = new IndvDsp();
+        ChartPanel cw = new ChartPanel();
         cw.showChart(323, "rpfll", true);
         Approvals.verify(cw);
     }
 
     @Test
     public void testPieChartCompare() {
-        IndvDsp cw = new IndvDsp();
+        ChartPanel cw = new ChartPanel();
         cw.showChart(323, "shareddisplay", true);
         Approvals.verify(cw);
     }

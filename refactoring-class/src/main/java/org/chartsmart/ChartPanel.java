@@ -5,9 +5,9 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class IndvDsp extends JPanel {
+public class ChartPanel extends JPanel {
 
-    public static final String SHAREDDISPLAY = "shareddisplay";
+    private static final String SHARED_DISPLAY = "shareddisplay";
     private final int BAR_CHART = 406;
     private final String SINGLE_MODE = "rpfll";
     private String chartMode;
@@ -89,7 +89,7 @@ public class IndvDsp extends JPanel {
             }
         }
         if (chartType == BAR_CHART) {
-            if (chartMode.equals(SHAREDDISPLAY)) {
+            if (chartMode.equals(SHARED_DISPLAY)) {
                 graphics.setColor(Color.CYAN);
                 int bottomY = 300;
                 graphics.fillRect(100, bottomY - 100, 40, 100);
