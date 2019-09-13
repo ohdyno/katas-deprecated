@@ -48,26 +48,26 @@ public class IndvDsp extends JPanel {
         DrawChart(g);
     }
 
-    private void DrawChart(Graphics g) {
+    private void DrawChart(Graphics graphics) {
         // Render chart background
         if (chartType == BAR_CHART) {
             if (chartMode.equals(SINGLE_MODE)) {
-                g.setColor(Color.RED);
-                g.fillRect(100, 90, getWidth() - 200, 420);
+                graphics.setColor(Color.RED);
+                graphics.fillRect(100, 90, getWidth() - 200, 420);
             } else {
-                g.setColor(Color.BLACK);
-                g.fillRect(95, 95, 210, 210);
+                graphics.setColor(Color.BLACK);
+                graphics.fillRect(95, 95, 210, 210);
             }
         } else {
             if (chartMode.equals(SINGLE_MODE)) {
-                g.setColor(Color.BLUE);
-                g.fillOval(100, 100, 450, getHeight() - 150);
+                graphics.setColor(Color.BLUE);
+                graphics.fillOval(100, 100, 450, getHeight() - 150);
             } else {
-                g.setColor(Color.BLUE);
-                g.fillOval(100, 100, 225, 225);
+                graphics.setColor(Color.BLUE);
+                graphics.fillOval(100, 100, 225, 225);
             }
         }
-        String[] barTitle = null;
+        String[] barTitle = new String[0];
         List<String> pieTitle2 = new ArrayList<>();
         String[] pieTitle = new String[0];
         if (chartType == BAR_CHART) {
@@ -89,48 +89,41 @@ public class IndvDsp extends JPanel {
                 pieTitle[0] = "Pie Chart";
             }
         }
-        Font font;
         if (chartType == BAR_CHART) {
             if (chartMode.equals(SHAREDDISPLAY)) {
-                if (barTitle != null) {
-                    font = new Font("Arial Black", Font.BOLD, 25);
-                    g.setColor(Color.CYAN);
-                    int bottomY = 300;
-                    g.fillRect(100, bottomY - 100, 40, 100);
-                    g.fillRect(140, bottomY - 200, 40, 200);
-                    g.fillRect(180, bottomY - 150, 40, 150);
-                    g.fillRect(220, bottomY - 125, 40, 125);
-                    g.fillRect(260, bottomY - 170, 40, 170);
-                    g.setColor(Color.RED);
-                    g.setFont(font);
-                    g.drawString(barTitle[0], 130, 250);
-                    g.drawString(barTitle[1], 130, 270);
-                }
+                graphics.setColor(Color.CYAN);
+                int bottomY = 300;
+                graphics.fillRect(100, bottomY - 100, 40, 100);
+                graphics.fillRect(140, bottomY - 200, 40, 200);
+                graphics.fillRect(180, bottomY - 150, 40, 150);
+                graphics.fillRect(220, bottomY - 125, 40, 125);
+                graphics.fillRect(260, bottomY - 170, 40, 170);
+                graphics.setColor(Color.RED);
+                graphics.setFont(new Font("Arial Black", Font.BOLD, 25));
+                graphics.drawString(barTitle[0], 130, 250);
+                graphics.drawString(barTitle[1], 130, 270);
             } else {
                 int bottomY = 500;
-                g.setColor(Color.CYAN);
-                g.fillRect(112, bottomY - 200, 75, 200);
-                g.fillRect(187, bottomY - 400, 75, 400);
-                g.fillRect(262, bottomY - 300, 75, 300);
-                g.fillRect(337, bottomY - 250, 75, 250);
-                g.fillRect(412, bottomY - 340, 75, 340);
-                font = new Font("Arial Black", Font.BOLD, 55);
-                g.setColor(Color.BLACK);
-                g.setFont(font);
-                g.drawString(barTitle[0], 130, 400);
+                graphics.setColor(Color.CYAN);
+                graphics.fillRect(112, bottomY - 200, 75, 200);
+                graphics.fillRect(187, bottomY - 400, 75, 400);
+                graphics.fillRect(262, bottomY - 300, 75, 300);
+                graphics.fillRect(337, bottomY - 250, 75, 250);
+                graphics.fillRect(412, bottomY - 340, 75, 340);
+                graphics.setColor(Color.BLACK);
+                graphics.setFont(new Font("Arial Black", Font.BOLD, 55));
+                graphics.drawString(barTitle[0], 130, 400);
             }
         } else {
             if (chartMode.equals(SINGLE_MODE)) {
-                font = new Font("Bookman Old Style", Font.BOLD, 55);
-                g.setColor(Color.WHITE);
-                g.setFont(font);
-                g.drawString(pieTitle2.get(0), 200, 340);
+                graphics.setColor(Color.WHITE);
+                graphics.setFont(new Font("Bookman Old Style", Font.BOLD, 55));
+                graphics.drawString(pieTitle2.get(0), 200, 340);
             } else {
-                font = new Font("Bookman Old Style", Font.BOLD, 30);
-                g.setFont(font);
-                g.setColor(Color.WHITE);
-                g.drawString(pieTitle[0], 145, 205);
-                g.drawString(pieTitle[1], 170, 235);
+                graphics.setFont(new Font("Bookman Old Style", Font.BOLD, 30));
+                graphics.setColor(Color.WHITE);
+                graphics.drawString(pieTitle[0], 145, 205);
+                graphics.drawString(pieTitle[1], 170, 235);
             }
         }
     }
