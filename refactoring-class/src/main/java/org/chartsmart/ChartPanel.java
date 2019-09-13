@@ -55,9 +55,14 @@ public class ChartPanel extends JPanel {
     }
 
     private void drawChart(Graphics graphics) {
-        barTitle = new String[0];
+
         // Render chart background
         renderChartBackground(graphics);
+        renderChartForeground(graphics);
+    }
+
+    private void renderChartForeground(Graphics graphics) {
+        barTitle = new String[0];
         pieTitle2 = new ArrayList<>();
         pieTitle = new String[0];
         if (chartType == BAR_CHART) {
