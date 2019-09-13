@@ -13,9 +13,6 @@ public class ChartPanel extends JPanel {
     private String chartMode;
     private String title;
     private int chartType;
-    private String[] barTitle;
-    private String[] pieTitle;
-    private List<String> pieTitle2;
 
     private void initializeDrawArea() {
         this.setPreferredSize(new Dimension(600, 600));
@@ -60,10 +57,8 @@ public class ChartPanel extends JPanel {
     }
 
     private void renderChartForeground(Graphics graphics) {
-        barTitle = new String[0];
-        pieTitle2 = new ArrayList<>();
-        pieTitle = new String[0];
         if (chartType == BAR_CHART) {
+            String[] barTitle = new String[0];
             if (chartMode.equals(SINGLE_MODE)) {
                 barTitle = new String[1];
                 barTitle[0] = "Bar Chart";
@@ -72,7 +67,10 @@ public class ChartPanel extends JPanel {
                 barTitle[0] = "Bar Chart";
                 barTitle[1] = "Small";
             }
+            setBarChartGraphics(graphics, barTitle);
         } else {
+            String[] pieTitle = new String[0];
+            List<String> pieTitle2 = new ArrayList<>();
             if (chartMode.equals(SINGLE_MODE)) {
                 pieTitle2.add("Pie Chart");
             } else {
@@ -80,10 +78,6 @@ public class ChartPanel extends JPanel {
                 pieTitle[1] = "Small";
                 pieTitle[0] = "Pie Chart";
             }
-        }
-        if (chartType == BAR_CHART) {
-            setBarChartGraphics(graphics, barTitle);
-        } else {
             setPieChartGraphics(graphics, pieTitle2, pieTitle);
         }
     }
