@@ -49,23 +49,7 @@ public class ChartPanel extends JPanel {
 
     private void drawChart(Graphics graphics) {
         // Render chart background
-        if (chartType == BAR_CHART) {
-            if (chartMode.equals(SINGLE_MODE)) {
-                graphics.setColor(Color.RED);
-                graphics.fillRect(100, 90, getWidth() - 200, 420);
-            } else {
-                graphics.setColor(Color.BLACK);
-                graphics.fillRect(95, 95, 210, 210);
-            }
-        } else {
-            if (chartMode.equals(SINGLE_MODE)) {
-                graphics.setColor(Color.BLUE);
-                graphics.fillOval(100, 100, 450, getHeight() - 150);
-            } else {
-                graphics.setColor(Color.BLUE);
-                graphics.fillOval(100, 100, 225, 225);
-            }
-        }
+        renderChartBackground(graphics);
         String[] barTitle = new String[0];
         List<String> pieTitle2 = new ArrayList<>();
         String[] pieTitle = new String[0];
@@ -125,4 +109,26 @@ public class ChartPanel extends JPanel {
             }
         }
     }
+
+    private void renderChartBackground(Graphics graphics) {
+        if (chartType == BAR_CHART) {
+            if (chartMode.equals(SINGLE_MODE)) {
+                graphics.setColor(Color.RED);
+                graphics.fillRect(100, 90, getWidth() - 200, 420);
+            } else {
+                graphics.setColor(Color.BLACK);
+                graphics.fillRect(95, 95, 210, 210);
+            }
+        } else {
+            if (chartMode.equals(SINGLE_MODE)) {
+                graphics.setColor(Color.BLUE);
+                graphics.fillOval(100, 100, 450, getHeight() - 150);
+            } else {
+                graphics.setColor(Color.BLUE);
+                graphics.fillOval(100, 100, 225, 225);
+            }
+        }
+    }
+
+
 }
