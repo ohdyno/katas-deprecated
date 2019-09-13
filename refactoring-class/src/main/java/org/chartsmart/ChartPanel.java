@@ -53,36 +53,27 @@ public class ChartPanel extends JPanel {
 
     private void drawChart(Graphics graphics) {
         renderChartBackground(graphics);
-        renderChartForeground(graphics);
+        renderChart(graphics);
     }
 
-    private void renderChartForeground(Graphics graphics) {
+    private void renderChart(Graphics graphics) {
         if (chartType == BAR_CHART) {
-            String[] barTitle = new String[0];
-            if (chartMode.equals(SINGLE_MODE)) {
-                barTitle = new String[1];
-                barTitle[0] = "Bar Chart";
-            } else {
-                barTitle = new String[2];
-                barTitle[0] = "Bar Chart";
-                barTitle[1] = "Small";
-            }
-            setBarChartGraphics(graphics, barTitle);
+            renderBarChart(graphics);
         } else {
-            String[] pieTitle = new String[0];
-            List<String> pieTitle2 = new ArrayList<>();
-            if (chartMode.equals(SINGLE_MODE)) {
-                pieTitle2.add("Pie Chart");
-            } else {
-                pieTitle = new String[2];
-                pieTitle[1] = "Small";
-                pieTitle[0] = "Pie Chart";
-            }
-            setPieChartGraphics(graphics, pieTitle2, pieTitle);
+            renderPieChart(graphics);
         }
     }
 
-    private void setPieChartGraphics(Graphics graphics, List<String> pieTitle2, String[] pieTitle) {
+    private void renderPieChart(Graphics graphics) {
+        String[] pieTitle = new String[0];
+        List<String> pieTitle2 = new ArrayList<>();
+        if (chartMode.equals(SINGLE_MODE)) {
+            pieTitle2.add("Pie Chart");
+        } else {
+            pieTitle = new String[2];
+            pieTitle[1] = "Small";
+            pieTitle[0] = "Pie Chart";
+        }
         if (chartMode.equals(SINGLE_MODE)) {
             graphics.setColor(Color.WHITE);
             graphics.setFont(new Font("Bookman Old Style", Font.BOLD, 55));
@@ -95,7 +86,16 @@ public class ChartPanel extends JPanel {
         }
     }
 
-    private void setBarChartGraphics(Graphics graphics, String[] barTitle) {
+    private void renderBarChart(Graphics graphics) {
+        String[] barTitle;
+        if (chartMode.equals(SINGLE_MODE)) {
+            barTitle = new String[1];
+            barTitle[0] = "Bar Chart";
+        } else {
+            barTitle = new String[2];
+            barTitle[0] = "Bar Chart";
+            barTitle[1] = "Small";
+        }
         if (chartMode.equals(SHARED_DISPLAY)) {
             renderSharedBarChart(graphics, barTitle);
         } else {
