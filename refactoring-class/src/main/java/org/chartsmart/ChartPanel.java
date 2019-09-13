@@ -16,6 +16,10 @@ public class ChartPanel extends JPanel {
 
     private void initializeDrawArea() {
         this.setPreferredSize(new Dimension(600, 600));
+        getChartTitle();
+    }
+
+    private void getChartTitle() {
         if (chartType == BAR_CHART) {
             if (chartMode.equals(SINGLE_MODE)) {
                 title = "Bar Chart - Single Mode";
