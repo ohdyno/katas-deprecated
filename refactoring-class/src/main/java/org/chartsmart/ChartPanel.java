@@ -45,10 +45,10 @@ public class ChartPanel extends JPanel {
     }
 
     public void paint(Graphics g) {
-        DrawChart(g);
+        drawChart(g);
     }
 
-    private void DrawChart(Graphics graphics) {
+    private void drawChart(Graphics graphics) {
         // Render chart background
         if (chartType == BAR_CHART) {
             if (chartMode.equals(SINGLE_MODE)) {
