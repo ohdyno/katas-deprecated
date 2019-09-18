@@ -48,19 +48,19 @@ public class ChartPanel extends JPanel {
         renderChart(graphics);
     }
 
-    private void renderChart(Graphics graphics) {
-        if (chartType == BAR_CHART) {
-            renderBarChart(graphics);
-        } else {
-            renderPieChart(graphics);
-        }
-    }
-
     private void renderChartBackground(Graphics graphics) {
         if (chartType == BAR_CHART) {
             renderBarChartBackground(graphics);
         } else {
             renderPieChartBackground(graphics);
+        }
+    }
+
+    private void renderChart(Graphics graphics) {
+        if (chartType == BAR_CHART) {
+            renderBarChart(graphics);
+        } else {
+            renderPieChart(graphics);
         }
     }
 
