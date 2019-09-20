@@ -3,7 +3,7 @@ package org.chartsmart;
 import java.awt.*;
 
 public class BarChart {
-    void renderBarChart(Graphics graphics, String chartMode, String singleMode) {
+    void renderChart(Graphics graphics, String chartMode, String singleMode) {
         String[] barTitle;
         if (chartMode.equals(singleMode)) {
             barTitle = new String[1];

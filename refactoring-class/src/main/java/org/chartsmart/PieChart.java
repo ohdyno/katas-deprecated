@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PieChart {
-    void renderPieChart(Graphics graphics, String chartMode, String singleMode) {
+    void renderChart(Graphics graphics, String chartMode, String singleMode) {
         String[] pieTitle = new String[0];
         List<String> pieTitle2 = new ArrayList<>();
         if (chartMode.equals(singleMode)) {
