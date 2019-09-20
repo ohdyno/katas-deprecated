@@ -3,9 +3,16 @@ package org.chartsmart;
 import java.awt.*;
 
 public class BarChart implements Chart {
-    public void renderChart(Graphics graphics, String chartMode, String singleMode) {
+
+    private String chartMode;
+
+    public BarChart(String chartMode) {
+        this.chartMode = chartMode;
+    }
+
+    public void renderChart(Graphics graphics) {
         String[] barTitle;
-        if (chartMode.equals(singleMode)) {
+        if (this.chartMode.equals(Chart.SINGLE_MODE)) {
             barTitle = new String[1];
             barTitle[0] = "Bar Chart";
         } else {
@@ -13,7 +20,7 @@ public class BarChart implements Chart {
             barTitle[0] = "Bar Chart";
             barTitle[1] = "Small";
         }
-        if (chartMode.equals(singleMode)) {
+        if (this.chartMode.equals(Chart.SINGLE_MODE)) {
             int bottomY = 500;
             graphics.setColor(Color.CYAN);
             graphics.fillRect(112, bottomY - 200, 75, 200);
@@ -39,8 +46,8 @@ public class BarChart implements Chart {
         }
     }
 
-    public void renderChartBackground(Graphics graphics, String chartMode, String singleMode, int width) {
-        if (chartMode.equals(singleMode)) {
+    public void renderChartBackground(Graphics graphics, int width, int height) {
+        if (this.chartMode.equals(Chart.SINGLE_MODE)) {
             graphics.setColor(Color.RED);
             graphics.fillRect(100, 90, width - 200, 420);
         } else {
@@ -49,9 +56,9 @@ public class BarChart implements Chart {
         }
     }
 
-    public String setChartTitle(String chartMode, String singleMode) {
+    public String getTitle() {
         String title;
-        if (chartMode.equals(singleMode)) {
+        if (this.chartMode.equals(Chart.SINGLE_MODE)) {
             title = "Bar Chart - Single Mode";
         } else {
             title = "Bar Chart - Compare Mode";
