@@ -48,9 +48,9 @@ public class ChartPanel extends JPanel {
 
     private void renderChartBackground(Graphics graphics) {
         if (chartType == BAR_CHART) {
-            renderBarChartBackground(graphics);
+            new BarChart().renderChartBackground(graphics, chartMode, SINGLE_MODE, getWidth());
         } else {
-            renderPieChartBackground(graphics);
+            new PieChart().renderChartBackground(graphics, chartMode, SINGLE_MODE, getHeight());
         }
     }
 
@@ -72,31 +72,11 @@ public class ChartPanel extends JPanel {
         }
     }
 
-    private void renderBarChartBackground(Graphics graphics) {
-        if (chartMode.equals(SINGLE_MODE)) {
-            graphics.setColor(Color.RED);
-            graphics.fillRect(100, 90, getWidth() - 200, 420);
-        } else {
-            graphics.setColor(Color.BLACK);
-            graphics.fillRect(95, 95, 210, 210);
-        }
-    }
-
     private void setPieChartTitle() {
         if (chartMode.equals(SINGLE_MODE)) {
             title = "Pie Chart - Single Mode";
         } else {
             title = "Pie Chart - Compare Mode";
-        }
-    }
-
-    private void renderPieChartBackground(Graphics graphics) {
-        if (chartMode.equals(SINGLE_MODE)) {
-            graphics.setColor(Color.BLUE);
-            graphics.fillOval(100, 100, 450, getHeight() - 150);
-        } else {
-            graphics.setColor(Color.BLUE);
-            graphics.fillOval(100, 100, 225, 225);
         }
     }
 
