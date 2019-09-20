@@ -14,17 +14,9 @@ public class ChartPanel extends JPanel {
 
     private void initializeDrawArea() {
         this.setPreferredSize(new Dimension(600, 600));
-        setChartTitle();
     }
 
-    private void setChartTitle() {
-        if (chartType == BAR_CHART) {
-            chart = new BarChart();
-        } else {
-            chart = new PieChart();
-        }
-        title = chart.setChartTitle(chartMode, SINGLE_MODE);
-    }
+
 
     String getTitle() {
         return title;
@@ -51,6 +43,7 @@ public class ChartPanel extends JPanel {
             chart = new PieChart();
             dimension = getHeight();
         }
+        title = chart.setChartTitle(chartMode, SINGLE_MODE);
         chart.renderChartBackground(graphics, chartMode, SINGLE_MODE, dimension);
         chart.renderChart(graphics, chartMode, SINGLE_MODE);
     }
