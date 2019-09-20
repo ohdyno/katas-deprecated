@@ -5,12 +5,12 @@ import java.awt.*;
 
 public class ChartPanel extends JPanel {
 
-    private static final String SHARED_DISPLAY = "shareddisplay";
     private static final int BAR_CHART = 406;
     private static final String SINGLE_MODE = "rpfll";
     private String chartMode;
     private String title;
     private int chartType;
+    private Chart chart;
 
     private void initializeDrawArea() {
         this.setPreferredSize(new Dimension(600, 600));
@@ -18,7 +18,6 @@ public class ChartPanel extends JPanel {
     }
 
     private void setChartTitle() {
-        Chart chart;
         if (chartType == BAR_CHART) {
             chart = new BarChart();
         } else {
@@ -44,12 +43,6 @@ public class ChartPanel extends JPanel {
     }
 
     private void drawChart(Graphics graphics) {
-        renderChartBackground(graphics);
-        renderChart(graphics);
-    }
-
-    private void renderChartBackground(Graphics graphics) {
-        Chart chart;
         int dimension;
         if (chartType == BAR_CHART) {
             chart = new BarChart();
@@ -59,15 +52,6 @@ public class ChartPanel extends JPanel {
             dimension = getHeight();
         }
         chart.renderChartBackground(graphics, chartMode, SINGLE_MODE, dimension);
-    }
-
-    private void renderChart(Graphics graphics) {
-        Chart chart;
-        if (chartType == BAR_CHART) {
-            chart = new BarChart();
-        } else {
-            chart = new PieChart();
-        }
         chart.renderChart(graphics, chartMode, SINGLE_MODE);
     }
 
