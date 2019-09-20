@@ -4,8 +4,8 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PieChart {
-    void renderChart(Graphics graphics, String chartMode, String singleMode) {
+public class PieChart implements Chart {
+    public void renderChart(Graphics graphics, String chartMode, String singleMode) {
         String[] pieTitle = new String[0];
         List<String> pieTitle2 = new ArrayList<>();
         if (chartMode.equals(singleMode)) {

@@ -2,8 +2,8 @@ package org.chartsmart;
 
 import java.awt.*;
 
-public class BarChart {
-    void renderChart(Graphics graphics, String chartMode, String singleMode) {
+public class BarChart implements Chart {
+    public void renderChart(Graphics graphics, String chartMode, String singleMode) {
         String[] barTitle;
         if (chartMode.equals(singleMode)) {
             barTitle = new String[1];
