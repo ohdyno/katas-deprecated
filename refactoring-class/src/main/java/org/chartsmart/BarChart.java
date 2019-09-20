@@ -48,4 +48,14 @@ public class BarChart implements Chart {
             graphics.fillRect(95, 95, 210, 210);
         }
     }
+
+    public String setChartTitle(String chartMode, String singleMode) {
+        String title;
+        if (chartMode.equals(singleMode)) {
+            title = "Bar Chart - Single Mode";
+        } else {
+            title = "Bar Chart - Compare Mode";
+        }
+        return title;
+    }
 }

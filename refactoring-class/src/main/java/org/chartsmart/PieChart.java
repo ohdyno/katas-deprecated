@@ -36,4 +36,14 @@ public class PieChart implements Chart {
             graphics.fillOval(100, 100, 225, 225);
         }
     }
+
+    public String setChartTitle(String chartMode, String singleMode) {
+        String title;
+        if (chartMode.equals(singleMode)) {
+            title = "Pie Chart - Single Mode";
+        } else {
+            title = "Pie Chart - Compare Mode";
+        }
+        return title;
+    }
 }

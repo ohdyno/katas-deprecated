@@ -18,11 +18,13 @@ public class ChartPanel extends JPanel {
     }
 
     private void setChartTitle() {
+        Chart chart;
         if (chartType == BAR_CHART) {
-            setBarChartTitle();
+            chart = new BarChart();
         } else {
-            setPieChartTitle();
+            chart = new PieChart();
         }
+        title = chart.setChartTitle(chartMode, SINGLE_MODE);
     }
 
     String getTitle() {
@@ -48,12 +50,15 @@ public class ChartPanel extends JPanel {
 
     private void renderChartBackground(Graphics graphics) {
         Chart chart;
+        int dimension;
         if (chartType == BAR_CHART) {
             chart = new BarChart();
+            dimension = getWidth();
         } else {
             chart = new PieChart();
+            dimension = getHeight();
         }
-        chart.renderChartBackground(graphics, chartMode, SINGLE_MODE, getHeight());
+        chart.renderChartBackground(graphics, chartMode, SINGLE_MODE, dimension);
     }
 
     private void renderChart(Graphics graphics) {
@@ -64,22 +69,6 @@ public class ChartPanel extends JPanel {
             chart = new PieChart();
         }
         chart.renderChart(graphics, chartMode, SINGLE_MODE);
-    }
-
-    private void setBarChartTitle() {
-        if (chartMode.equals(SINGLE_MODE)) {
-            title = "Bar Chart - Single Mode";
-        } else {
-            title = "Bar Chart - Compare Mode";
-        }
-    }
-
-    private void setPieChartTitle() {
-        if (chartMode.equals(SINGLE_MODE)) {
-            title = "Pie Chart - Single Mode";
-        } else {
-            title = "Pie Chart - Compare Mode";
-        }
     }
 
 }
