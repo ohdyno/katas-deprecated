@@ -27,7 +27,7 @@ public class PieChart implements Chart {
         }
     }
 
-    void renderChartBackground(Graphics graphics, String chartMode, String singleMode, int height) {
+    public void renderChartBackground(Graphics graphics, String chartMode, String singleMode, int height) {
         if (chartMode.equals(singleMode)) {
             graphics.setColor(Color.BLUE);
             graphics.fillOval(100, 100, 450, height - 150);

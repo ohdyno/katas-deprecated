@@ -47,11 +47,13 @@ public class ChartPanel extends JPanel {
     }
 
     private void renderChartBackground(Graphics graphics) {
+        Chart chart;
         if (chartType == BAR_CHART) {
-            new BarChart().renderChartBackground(graphics, chartMode, SINGLE_MODE, getWidth());
+            chart = new BarChart();
         } else {
-            new PieChart().renderChartBackground(graphics, chartMode, SINGLE_MODE, getHeight());
+            chart = new PieChart();
         }
+        chart.renderChartBackground(graphics, chartMode, SINGLE_MODE, getHeight());
     }
 
     private void renderChart(Graphics graphics) {
