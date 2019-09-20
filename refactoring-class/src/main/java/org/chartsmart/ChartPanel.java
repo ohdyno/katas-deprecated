@@ -56,7 +56,7 @@ public class ChartPanel extends JPanel {
 
     private void renderChart(Graphics graphics) {
         if (chartType == BAR_CHART) {
-            new BarChart().renderBarChart(graphics, chartMode, SINGLE_MODE, SHARED_DISPLAY);
+            new BarChart().renderBarChart(graphics, chartMode, SINGLE_MODE);
         } else {
             new PieChart().renderPieChart(graphics, chartMode, SINGLE_MODE);
         }

@@ -3,7 +3,7 @@ package org.chartsmart;
 import java.awt.*;
 
 public class BarChart {
-    void renderBarChart(Graphics graphics, String chartMode, String singleMode, String sharedDisplay) {
+    void renderBarChart(Graphics graphics, String chartMode, String singleMode) {
         String[] barTitle;
         if (chartMode.equals(singleMode)) {
             barTitle = new String[1];
@@ -13,7 +13,18 @@ public class BarChart {
             barTitle[0] = "Bar Chart";
             barTitle[1] = "Small";
         }
-        if (chartMode.equals(sharedDisplay)) {
+        if (chartMode.equals(singleMode)) {
+            int bottomY = 500;
+            graphics.setColor(Color.CYAN);
+            graphics.fillRect(112, bottomY - 200, 75, 200);
+            graphics.fillRect(187, bottomY - 400, 75, 400);
+            graphics.fillRect(262, bottomY - 300, 75, 300);
+            graphics.fillRect(337, bottomY - 250, 75, 250);
+            graphics.fillRect(412, bottomY - 340, 75, 340);
+            graphics.setColor(Color.BLACK);
+            graphics.setFont(new Font("Arial Black", Font.BOLD, 55));
+            graphics.drawString(barTitle[0], 130, 400);
+        } else {
             graphics.setColor(Color.CYAN);
             int bottomY = 300;
             graphics.fillRect(100, bottomY - 100, 40, 100);
@@ -25,17 +36,6 @@ public class BarChart {
             graphics.setFont(new Font("Arial Black", Font.BOLD, 25));
             graphics.drawString(barTitle[0], 130, 250);
             graphics.drawString(barTitle[1], 130, 270);
-        } else {
-            int bottomY = 500;
-            graphics.setColor(Color.CYAN);
-            graphics.fillRect(112, bottomY - 200, 75, 200);
-            graphics.fillRect(187, bottomY - 400, 75, 400);
-            graphics.fillRect(262, bottomY - 300, 75, 300);
-            graphics.fillRect(337, bottomY - 250, 75, 250);
-            graphics.fillRect(412, bottomY - 340, 75, 340);
-            graphics.setColor(Color.BLACK);
-            graphics.setFont(new Font("Arial Black", Font.BOLD, 55));
-            graphics.drawString(barTitle[0], 130, 400);
         }
     }
 }
